@@ -31,6 +31,7 @@ struct Home: View {
                         Button(action: {
                             self.showSheet = true
                         }) {
+                            
                             Image(uiImage: profileImage ?? UIImage(named: "placeholder")!)
                                 .resizable()
                                 .scaledToFill()
@@ -64,7 +65,7 @@ struct Home: View {
 
                         Spacer()
 
-                        NavigationLink(destination: ChatView()) {
+                        NavigationLink(destination: LIstChatView()) {
                             Image(systemName: "message.fill")
                                 .resizable()
                                 .frame(width: 25, height: 25)

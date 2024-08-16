@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import FirebaseAuth
 
 struct LocationCoordinate: Identifiable {
     let id = UUID()
@@ -23,13 +24,16 @@ struct NewJobView: View {
     @State private var showingDeliveryPicker = false
     @State private var showingAlert = false
     @State private var alertMessage = ""
-    
+    @Environment(\.presentationMode) var presentationMode // Para fechar a tela
+
     @State var destinoColeta: String = ""
     @State var destinoEntrega: String = ""
     @State var telefone: String = ""
     @State var tipodeCarga: String = ""
     @State var tipoDeCaminhao: String = ""
     @State var valor: String = ""
+
+    var job: Job? // Propriedade opcional para edição
 
     var body: some View {
         ZStack {
@@ -39,7 +43,7 @@ struct NewJobView: View {
             VStack {
                 ScrollView {
                     VStack {
-                        Text("Informe os dados para o Anúncio do frete")
+                        Text(job == nil ? "Informe os dados para o Anúncio do frete" : "Edite os dados do Anúncio")
                             .padding(.bottom, 20)
                             .padding(.top, 20)
                         
@@ -78,8 +82,8 @@ struct NewJobView: View {
                     .padding(.horizontal, 15)
                 }
                 
-                Button(action: registerJob) {
-                    Text("Cadastrar")
+                Button(action: job == nil ? registerJob : updateJob) {
+                    Text(job == nil ? "Cadastrar" : "Atualizar")
                         .frame(width: 335)
                         .frame(height: 50)
                         .font(.system(size: 18, weight: .bold))
@@ -98,15 +102,27 @@ struct NewJobView: View {
             MapPickerView(coordinate: $deliveryCoordinate, title: "Selecione o Local de Entrega")
         }
         .alert(isPresented: $showingAlert) {
-            Alert(title: Text("Sucesso!"), message: Text(alertMessage), dismissButton: .default(Text("OK"), action: resetFields))
+            Alert(title: Text("Sucesso!"), message: Text(alertMessage), dismissButton: .default(Text("OK"), action: closeView))
+        }
+        .onAppear {
+            if let job = job {
+                destinoColeta = job.destinoColeta
+                destinoEntrega = job.destinoEntrega
+                telefone = job.telefone
+                tipodeCarga = job.tipodeCarga
+                tipoDeCaminhao = job.tipoDeCaminhao
+                valor = job.valor
+                pickupCoordinate = LocationCoordinate(coordinate: CLLocationCoordinate2D(latitude: job.latitudeColeta, longitude: job.longitudeColeta))
+                deliveryCoordinate = LocationCoordinate(coordinate: CLLocationCoordinate2D(latitude: job.latitudeEntrega, longitude: job.longitudeEntrega))
+            }
         }
         .onChange(of: viewModel.state) { newState in
             switch newState {
             case .successfullyRegistered:
-                alertMessage = "Anúncio cadastrado com sucesso!"
+                alertMessage = job == nil ? "Anúncio cadastrado com sucesso!" : "Anúncio atualizado com sucesso!"
                 showingAlert = true
             case .failed(let error):
-                alertMessage = "Erro ao cadastrar: \(error.localizedDescription)"
+                alertMessage = "Erro: \(error.localizedDescription)"
                 showingAlert = true
             default:
                 break
@@ -116,6 +132,10 @@ struct NewJobView: View {
 
     private func registerJob() {
         if let pickup = pickupCoordinate?.coordinate, let delivery = deliveryCoordinate?.coordinate {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                return
+            }
+
             viewModel.newJob = NewJobRequest(
                 latitudeColeta: pickup.latitude,
                 longitudeColeta: pickup.longitude,
@@ -126,10 +146,36 @@ struct NewJobView: View {
                 telefone: telefone,
                 tipodeCarga: tipodeCarga,
                 tipoDeCaminhao: tipoDeCaminhao,
-                valor: valor
+                valor: valor,
+                userId: userId
             )
             viewModel.create()
         }
+    }
+
+    private func updateJob() {
+        if let job = job, let pickup = pickupCoordinate?.coordinate, let delivery = deliveryCoordinate?.coordinate {
+            let updatedJob = NewJobRequest(
+                latitudeColeta: pickup.latitude,
+                longitudeColeta: pickup.longitude,
+                latitudeEntrega: delivery.latitude,
+                longitudeEntrega: delivery.longitude,
+                destinoColeta: destinoColeta,
+                destinoEntrega: destinoEntrega,
+                telefone: telefone,
+                tipodeCarga: tipodeCarga,
+                tipoDeCaminhao: tipoDeCaminhao,
+                valor: valor,
+                userId: job.userId
+            )
+
+            viewModel.update(jobId: job.id, with: updatedJob)
+        }
+    }
+
+    private func closeView() {
+        resetFields() // Limpa os campos de texto
+        // presentationMode.wrappedValue.dismiss() // Fecha a tela após o sucesso, se necessário
     }
 
     private func resetFields() {
@@ -149,8 +195,6 @@ extension CLLocationCoordinate2D {
         return String(format: "%.4f, %.4f", latitude, longitude)
     }
 }
-
-
 
 #Preview {
     NewJobView()

@@ -3,4 +3,310 @@
    uuid = "8E13EFEA-59A8-4F2B-9E5A-A99050D1D9BC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDDE40DC-9034-4B13-B0AE-BD8908F395B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Chat/ConversationListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "7"
+            endingLineNumber = "7"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEA29202-EA82-4B00-967E-7C77A9D98326"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66751A7D-3B12-453C-9035-6D70F28E5675"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80EC6546-2C90-49EA-834A-B5D60D521E74"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65FD0C47-72CA-457C-B0C0-AA58766898D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "65FD0C47-72CA-457C-B0C0-AA58766898D7 - b1c00be24a376421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "636">
+               </Location>
+               <Location
+                  uuid = "65FD0C47-72CA-457C-B0C0-AA58766898D7 - b1c00be24a376421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F517F674-C5D2-42E5-89D1-55F27245B791"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F517F674-C5D2-42E5-89D1-55F27245B791 - b1c00be24a377801"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "1520">
+               </Location>
+               <Location
+                  uuid = "F517F674-C5D2-42E5-89D1-55F27245B791 - b288dd7b2dff2eca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E69D8D33-CD5D-4214-8B82-ADBAFB3BF072"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E69D8D33-CD5D-4214-8B82-ADBAFB3BF072 - 41d7c6a1ce0e6f73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "E69D8D33-CD5D-4214-8B82-ADBAFB3BF072 - b1c00be24a3762f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09594898-2655-4096-BDD3-21610A2ECD9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "830AA35C-A780-4467-8022-C21A1F53354B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F8A40C5-4A6A-4810-B23F-1A390A34BDCD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F8A40C5-4A6A-4810-B23F-1A390A34BDCD - b1c00be24a376421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "636">
+               </Location>
+               <Location
+                  uuid = "0F8A40C5-4A6A-4810-B23F-1A390A34BDCD - b1c00be24a376421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 ((Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;(), Swift.Error&gt; in CargasBrasil.RegistrationServiceImpl.register(with: CargasBrasil.RegistrationCredentials) -&gt; Combine.AnyPublisher&lt;(), Swift.Error&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/Data/Service/RegistrationService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C30D0C24-1E63-467C-B13B-986D29948C83"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "register(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

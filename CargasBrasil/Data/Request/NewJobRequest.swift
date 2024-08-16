@@ -18,8 +18,10 @@ class NewJobRequest: Encodable {
     var tipodeCarga: String
     var tipoDeCaminhao: String
     var valor: String
+    var userId: String
+    
    
-    init(latitudeColeta: Double, longitudeColeta: Double, latitudeEntrega: Double, longitudeEntrega: Double, destinoColeta: String, destinoEntrega: String, telefone: String, tipodeCarga: String, tipoDeCaminhao: String, valor: String) {
+    init(latitudeColeta: Double, longitudeColeta: Double, latitudeEntrega: Double, longitudeEntrega: Double, destinoColeta: String, destinoEntrega: String, telefone: String, tipodeCarga: String, tipoDeCaminhao: String, valor: String, userId: String) {
         self.latitudeColeta = latitudeColeta
         self.longitudeColeta = longitudeColeta
         self.latitudeEntrega = latitudeEntrega
@@ -30,6 +32,7 @@ class NewJobRequest: Encodable {
         self.tipodeCarga = tipodeCarga
         self.tipoDeCaminhao = tipoDeCaminhao
         self.valor = valor
+        self.userId = userId
     }
     
     enum CodingKeys: String, CodingKey {
@@ -43,5 +46,24 @@ class NewJobRequest: Encodable {
         case tipodeCarga = "tipodeCarga"
         case tipoDeCaminhao = "tipoDeCaminhao"
         case valor = "valor"
+        case userId = "case userId "
+    }
+}
+
+extension NewJobRequest {
+    func toDictionary() -> [String: Any] {
+        return [
+            "latitudeColeta": latitudeColeta,
+            "longitudeColeta": longitudeColeta,
+            "latitudeEntrega": latitudeEntrega,
+            "longitudeEntrega": longitudeEntrega,
+            "destinoColeta": destinoColeta,
+            "destinoEntrega": destinoEntrega,
+            "telefone": telefone,
+            "tipodeCarga": tipodeCarga,
+            "tipoDeCaminhao": tipoDeCaminhao,
+            "valor": valor,
+            "userId": userId
+        ]
     }
 }

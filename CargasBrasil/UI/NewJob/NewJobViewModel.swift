@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
 
 protocol NewJobViewModel {
     func create()
@@ -21,7 +22,7 @@ final class NewJobViewModelImpl: ObservableObject, NewJobViewModel {
     
     let service: NewJobService
     @Published var state: JobRegistrationState = .na
-    @Published var newJob = NewJobRequest(latitudeColeta: 0.0, longitudeColeta: 0.0, latitudeEntrega: 0.0, longitudeEntrega: 0.0, destinoColeta: "", destinoEntrega: "", telefone: "", tipodeCarga: "", tipoDeCaminhao: "", valor: " ")
+    @Published var newJob = NewJobRequest(latitudeColeta: 0.0, longitudeColeta: 0.0, latitudeEntrega: 0.0, longitudeEntrega: 0.0, destinoColeta: "", destinoEntrega: "", telefone: "", tipodeCarga: "", tipoDeCaminhao: "", valor: " ", userId: " ")
     
   
     @Published var hasError: Bool = false
@@ -36,6 +37,7 @@ final class NewJobViewModelImpl: ObservableObject, NewJobViewModel {
     }
     
     func create() {
+
         service
             .register(with: newJob)
             .sink { [weak self] res in
@@ -49,6 +51,19 @@ final class NewJobViewModelImpl: ObservableObject, NewJobViewModel {
             }
             .store(in: &subscriptions)
     }
+    
+    func update(jobId: String, with updatedJob: NewJobRequest) {
+            let db = Firestore.firestore()
+            db.collection("anunciosTrabalhos").document(jobId).setData(updatedJob.toDictionary(), merge: true) { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        self.state = .failed(error: error)
+                    } else {
+                        self.state = .successfullyRegistered
+                    }
+                }
+            }
+        }
 }
 
 private extension NewJobViewModelImpl {

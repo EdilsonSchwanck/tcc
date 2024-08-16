@@ -59,21 +59,30 @@ final class HomeViewModelImpl: ObservableObject, HomeViewModel {
             }
             .store(in: &subscriptions)
     }
-    
+
     func fetchImage() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let docRef = Firestore.firestore().collection("users").document(uid)
+        let docRef = Firestore.firestore().collection("imageUsuario").document(uid)
         docRef.getDocument { [weak self] (document, error) in
             if let document = document, document.exists {
-                if let imageURL = document.data()?["profileImageURL"] as? String {
+                if let imageURL = document.data()?["imageURL"] as? String, !imageURL.isEmpty {
                     self?.downloadImage(from: imageURL, id: uid)
+                } else {
+                    print("URL da imagem não encontrada ou está vazia")
+                    DispatchQueue.main.async {
+                        self?.imageResponse = nil  // Aqui a imagem será nula, use um placeholder na View
+                    }
                 }
             } else {
-                print("Documento não encontrado")
+                print("Documento não encontrado ou erro: \(error?.localizedDescription ?? "Erro desconhecido")")
+                DispatchQueue.main.async {
+                    self?.imageResponse = nil  // Documento não encontrado, usar imagem placeholder
+                }
             }
         }
     }
+
     
     private func downloadImage(from urlString: String, id: String) {
         guard let url = URL(string: urlString) else { return }

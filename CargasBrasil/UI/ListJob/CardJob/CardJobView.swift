@@ -1,12 +1,15 @@
 import SwiftUI
 import MapKit
+import FirebaseFirestore
 
 struct CardJobView: View {
     var job: Job
     @State private var region: MKCoordinateRegion
-
     @State private var directions: [MKRoute] = []
     var isExpanded: Bool
+    @EnvironmentObject var sessionService: SessionServiceImpl
+    
+    @State private var showEditJobView = false // Estado para controlar a navegação para a edição
 
     init(job: Job, isExpanded: Bool) {
         self.job = job
@@ -53,17 +56,57 @@ struct CardJobView: View {
                 .padding(.horizontal)
                 
                 if isExpanded {
-                    Button(action: {
-                        // Ação do botão de chat
-                    }) {
-                        Text("Chat")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                    if sessionService.userDetails?.id == job.userId {
+                        HStack {
+                            Button(action: {
+                                editJob()
+                            }) {
+                                Text("Editar")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.orange)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            
+                            Button(action: {
+                                deleteJob()
+                            }) {
+                                Text("Excluir")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.red)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(.top, 10)
+                        .sheet(isPresented: $showEditJobView) {
+                            NavigationView {
+                                NewJobView(job: job) // Apresenta a tela de edição do anúncio
+                                    .toolbar {
+                                        ToolbarItem(placement: .navigationBarTrailing) {
+                                            Button(action: {
+                                                showEditJobView = false
+                                            }) {
+                                                Image(systemName: "xmark")
+                                                    .foregroundColor(.black)
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    } else if !(sessionService.userDetails?.isCompany ?? false) {
+                        NavigationLink(destination: ChatView(conversationId: job.id, otherUserId: job.userId)) {
+                            Text("Chat")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        .padding(.top, 10)
                     }
-                    .padding(.top, 10)
                 }
             }
             .padding()
@@ -94,6 +137,31 @@ struct CardJobView: View {
 
     private func updateRegion(for route: MKRoute) {
         region = MKCoordinateRegion(route.polyline.boundingMapRect)
+    }
+
+    private func editJob() {
+        // Navegar para a tela de edição do anúncio
+        showEditJobView = true
+    }
+
+    private func deleteJob() {
+        let alert = UIAlertController(title: "Excluir Anúncio", message: "Tem certeza que deseja excluir este anúncio?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Excluir", style: .destructive, handler: { _ in
+            let db = Firestore.firestore()
+            db.collection("anunciosTrabalhos").document(self.job.id).delete { error in
+                if let error = error {
+                    print("Erro ao excluir o anúncio: \(error.localizedDescription)")
+                } else {
+                    print("Anúncio excluído com sucesso")
+                }
+            }
+        }))
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootViewController = windowScene.windows.first?.rootViewController {
+            rootViewController.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -148,7 +216,7 @@ extension Job {
             latitudeColeta: -23.55052,
             longitudeColeta: -46.6333,
             latitudeEntrega: -22.9068,
-            longitudeEntrega: -43.1729
+            longitudeEntrega: -43.1729, userId: "44646"
         )
     }
 }

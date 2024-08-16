@@ -19,4 +19,5 @@ struct Job: Identifiable {
     var longitudeColeta: Double
     var latitudeEntrega: Double
     var longitudeEntrega: Double
+    var userId: String
 }

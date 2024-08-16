@@ -8,6 +8,8 @@
 import UIKit
 
 class RegistrationCredentials: Encodable {
+    
+    
     var email: String?
     var password: String
     var cnhCategory: String?
