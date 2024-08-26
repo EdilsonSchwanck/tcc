@@ -17,11 +17,14 @@ enum SessionState {
 }
 
 struct UserSessionDetails {
-    let id: String  // Adiciona o uid do usuário
+    let id: String  
     let nameUser: String
     let cnpj: String
     let isCompany: Bool
     let nameCompany: String
+    var plateVheicle: String
+    var typeVheicle: String
+    
     // Adicione aqui outros campos que você deseja armazenar
 }
 
@@ -81,6 +84,8 @@ private extension SessionServiceImpl {
                             let cnpj = data["cpfCnpj"] as? String ?? ""
                             let isCompany = data["isCompany"] as? Bool ?? false
                             let nameCompany = data["nameCompany"] as? String ?? ""
+                            let plateVheicle = data["plateVheicle"] as? String ?? ""
+                            let typeVheicle = data["typeVheicle"] as? String ?? ""
                             // Adicione aqui outros campos que você deseja pegar
                             
                             DispatchQueue.main.async {
@@ -89,7 +94,9 @@ private extension SessionServiceImpl {
                                     nameUser: nameUser,
                                     cnpj: cnpj,
                                     isCompany: isCompany,
-                                    nameCompany: nameCompany
+                                    nameCompany: nameCompany,
+                                    plateVheicle: plateVheicle,
+                                    typeVheicle: typeVheicle
                                 )
                             }
                         }

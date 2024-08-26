@@ -92,19 +92,19 @@ struct Home: View {
                                 .tag(1)
                         }
 
-                        Text("sla")
-                            .tabItem {
-                                Image(systemName: selectedTab == 1 ? "creditcard.fill" : "creditcard")
-                                Text("Transações")
-                            }
-                            .tag(2)
+//                        Text("sla")
+//                            .tabItem {
+//                                Image(systemName: selectedTab == 1 ? "creditcard.fill" : "creditcard")
+//                                Text("Transações")
+//                            }
+//                            .tag(2)
                         
                         PerfilView()
                             .tabItem {
                                 Image(systemName: selectedTab == 2 ? "person.fill" : "person")
                                 Text("Perfil")
                             }
-                            .tag(3)
+                            .tag(2)
                     }
                     .accentColor(.goldBackground)
                     .font(.headline)

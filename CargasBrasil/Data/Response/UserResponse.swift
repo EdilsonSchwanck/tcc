@@ -14,5 +14,7 @@ struct UserResponse: Identifiable {
     var nameUser: String
     var nameCompany: String
     var isCompany: String
+    var cpfCnpj: String
+    var plateVheicle: String
  
 }

@@ -17,6 +17,27 @@ struct PerfilView: View {
                 .font(.largeTitle)
                 .padding()
             
+            if sessionService.userDetails?.isCompany == true{
+                
+                Text(sessionService.userDetails?.nameCompany ?? "Nome do Usuário")
+                    .font(.largeTitle)
+                    .padding()
+                
+                Text(sessionService.userDetails?.cnpj ?? "Nome do Usuário")
+                    .font(.largeTitle)
+                    .padding()
+                
+              
+            }else{
+                Text(sessionService.userDetails?.plateVheicle ?? "Nome do Usuário")
+                    .font(.largeTitle)
+                    .padding()
+                Text(sessionService.userDetails?.typeVheicle ?? "Nome do Usuário")
+                    .font(.largeTitle)
+                    .padding()
+            }
+            
+            
             // Botão de logout
             Button(action: {
                 sessionService.logout()
