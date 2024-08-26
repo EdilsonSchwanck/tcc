@@ -21,107 +21,93 @@ final class ChatServiceImpl: ChatService {
     private let databaseRef = Database.database().reference()
 
     func fetchConversations() -> AnyPublisher<[Conversation], Error> {
-        Future { promise in
-            guard let currentUserId = Auth.auth().currentUser?.uid else {
-                promise(.success([]))
-                return
-            }
+        let conversationsSubject = PassthroughSubject<[Conversation], Error>()
+        
+        guard let currentUserId = Auth.auth().currentUser?.uid else {
+            conversationsSubject.send(completion: .finished)
+            return conversationsSubject.eraseToAnyPublisher()
+        }
 
-            let messagesRef = self.databaseRef.child("messages")
-            
-            messagesRef.observeSingleEvent(of: .value) { snapshot in
-                guard let snapshots = snapshot.children.allObjects as? [DataSnapshot] else {
-                    promise(.success([]))
-                    return
-                }
+        let messagesRef = self.databaseRef.child("messages")
+        
+        messagesRef.observe(.value) { snapshot in
+            var conversations: [Conversation] = []
 
-                var conversations: [Conversation] = []
+            for childSnapshot in snapshot.children.allObjects as? [DataSnapshot] ?? [] {
+                let conversationId = childSnapshot.key
+                var lastMessage: String = ""
+                var lastUserName: String = ""
+                var lastUserImageURL: String?
 
-                for childSnapshot in snapshots {
-                    let conversationId = childSnapshot.key
-                    var lastMessage: String = ""
-                    var otherUserName: String = ""
-                    var otherUserImageURL: String?
-                    var unreadMessagesCount: Int = 0
-                    var involvesCurrentUser = false
-
-                    if let messagesDict = childSnapshot.value as? [String: Any] {
-                        var conversationMessages: [[String: Any]] = []
-
-                        // Verifica se o usuário atual está envolvido na conversa
-                        for (_, value) in messagesDict {
-                            guard let messageDict = value as? [String: Any],
-                                  let userId = messageDict["userId"] as? String else { continue }
-
-                            if userId == currentUserId {
-                                involvesCurrentUser = true
-                            } else {
-                                otherUserName = messageDict["userName"] as? String ?? "Usuário"
-                                otherUserImageURL = messageDict["userImageURL"] as? String
-                            }
-
-                            conversationMessages.append(messageDict)
-                        }
-
-                        // Se o usuário atual está envolvido, processa as mensagens para encontrar a última mensagem e contar as não lidas
-                        if involvesCurrentUser {
-                            conversationMessages.sort { ($0["timestamp"] as? TimeInterval ?? 0) > ($1["timestamp"] as? TimeInterval ?? 0) }
-
-                            if let lastMessageDict = conversationMessages.first {
-                                lastMessage = lastMessageDict["text"] as? String ?? ""
-                                unreadMessagesCount = conversationMessages.filter { ($0["userId"] as? String) != currentUserId && !($0["isRead"] as? Bool ?? true) }.count
-                            }
-
-                            let conversation = Conversation(
-                                id: conversationId,
-                                userName: otherUserName,
-                                lastMessage: lastMessage,
-                                unreadMessagesCount: unreadMessagesCount,
-                                userImageURL: otherUserImageURL
-                            )
-                            conversations.append(conversation)
-                        }
+                for (_, value) in (childSnapshot.value as? [String: Any] ?? [:]).sorted(by: { ($0.value as! [String: Any])["timestamp"] as! TimeInterval > ($1.value as! [String: Any])["timestamp"] as! TimeInterval }) {
+                    if let messageDict = value as? [String: Any],
+                       let userId = messageDict["userId"] as? String,
+                       let userName = messageDict["userName"] as? String,
+                       let userImageURL = messageDict["userImageURL"] as? String,
+                       let text = messageDict["text"] as? String {
+                        
+                        lastMessage = text
+                        lastUserName = userName
+                        lastUserImageURL = userImageURL
+                        
+                        // Não precisa mais percorrer, já pegamos a última mensagem
+                        break
                     }
                 }
-
-                promise(.success(conversations))
-            } withCancel: { error in
-                promise(.failure(error))
+                
+                // Adiciona ou atualiza a conversa na lista
+                if let index = conversations.firstIndex(where: { $0.id == conversationId }) {
+                    conversations[index].lastMessage = lastMessage
+                } else {
+                    let conversation = Conversation(
+                        id: conversationId,
+                        userName: lastUserName,
+                        lastMessage: lastMessage,
+                        unreadMessagesCount: 0, // Pode ser ajustado conforme necessário
+                        userImageURL: lastUserImageURL
+                    )
+                    conversations.append(conversation)
+                }
             }
+
+            conversationsSubject.send(conversations)
+        } withCancel: { error in
+            conversationsSubject.send(completion: .failure(error))
         }
-        .eraseToAnyPublisher()
+        
+        return conversationsSubject.eraseToAnyPublisher()
     }
-
+    
     func fetchMessages(conversationId: String) -> AnyPublisher<[Message], Error> {
-          let messagesSubject = PassthroughSubject<[Message], Error>()
-          let messagesRef = self.databaseRef.child("messages").child(conversationId)
-          
-          messagesRef.observe(.childAdded) { snapshot in
-              guard let messageData = snapshot.value as? [String: Any],
-                    let text = messageData["text"] as? String,
-                    let timestamp = messageData["timestamp"] as? TimeInterval,
-                    let userId = messageData["userId"] as? String,
-                    let userName = messageData["userName"] as? String,
-                    let userImageURL = messageData["userImageURL"] as? String else {
-                  return
-              }
-
-              let message = Message(
-                  id: snapshot.key,
-                  text: text,
-                  isSentByCurrentUser: userId == Auth.auth().currentUser?.uid,
-                  timestamp: timestamp,
-                  userName: userName,
-                  userImageURL: userImageURL
-              )
-              
-              messagesSubject.send([message])
-          } withCancel: { error in
-              messagesSubject.send(completion: .failure(error))
+        let messagesSubject = PassthroughSubject<[Message], Error>()
+        let messagesRef = self.databaseRef.child("messages").child(conversationId)
+        
+        messagesRef.observe(.childAdded) { snapshot in
+            guard let messageData = snapshot.value as? [String: Any],
+                  let text = messageData["text"] as? String,
+                  let timestamp = messageData["timestamp"] as? TimeInterval,
+                  let userId = messageData["userId"] as? String,
+                  let userName = messageData["userName"] as? String,
+                  let userImageURL = messageData["userImageURL"] as? String else {
+              return
           }
+
+          let message = Message(
+              id: snapshot.key,
+              text: text,
+              isSentByCurrentUser: userId == Auth.auth().currentUser?.uid,
+              timestamp: timestamp,
+              userName: userName,
+              userImageURL: userImageURL
+          )
           
-          return messagesSubject.eraseToAnyPublisher()
-      }
+          messagesSubject.send([message])
+        } withCancel: { error in
+            messagesSubject.send(completion: .failure(error))
+        }
+        
+        return messagesSubject.eraseToAnyPublisher()
+    }
 
     func sendMessage(conversationId: String, text: String, userName: String, userImageURL: String?) -> AnyPublisher<Void, Error> {
         Future { promise in

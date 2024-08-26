@@ -47,7 +47,7 @@ struct LIstChatView: View {
         }
         .navigationTitle("Conversas")
         .onAppear {
-            viewModel.fetchConversations()
+            viewModel.observeConversations()
         }
         .onReceive(viewModel.$conversations) { conversations in
             self.conversations = conversations

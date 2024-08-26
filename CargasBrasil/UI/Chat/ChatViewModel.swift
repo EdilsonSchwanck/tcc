@@ -20,44 +20,45 @@ final class ChatViewModel: ObservableObject {
     
     init(chatService: ChatService = ChatServiceImpl()) {
         self.chatService = chatService
+        self.observeConversations() // Iniciar a observação das conversas
     }
     
     func fetchMessages(conversationId: String) {
-            chatService.fetchMessages(conversationId: conversationId)
-                .receive(on: DispatchQueue.main)
-                .sink { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Error fetching messages: \(error.localizedDescription)")
-                    case .finished:
-                        break
-                    }
-                } receiveValue: { [weak self] newMessages in
-                    self?.messages.append(contentsOf: newMessages)
-                    self?.messages.sort { $0.timestamp < $1.timestamp } // Garantir que as mensagens estejam em ordem cronológica
+        chatService.fetchMessages(conversationId: conversationId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error fetching messages: \(error.localizedDescription)")
+                case .finished:
+                    break
                 }
-                .store(in: &cancellables)
-        }
+            } receiveValue: { [weak self] newMessages in
+                self?.messages.append(contentsOf: newMessages)
+                self?.messages.sort { $0.timestamp < $1.timestamp } // Garantir que as mensagens estejam em ordem cronológica
+            }
+            .store(in: &cancellables)
+    }
 
-        func sendMessage(conversationId: String, userName: String, userImageURL: String?) {
-            guard !newMessageText.isEmpty else { return }
-            
-            chatService.sendMessage(conversationId: conversationId, text: newMessageText, userName: userName, userImageURL: userImageURL)
-                .receive(on: DispatchQueue.main)
-                .sink { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Error sending message: \(error.localizedDescription)")
-                    case .finished:
-                        break
-                    }
-                } receiveValue: { [weak self] in
-                    self?.newMessageText = ""
+    func sendMessage(conversationId: String, userName: String, userImageURL: String?) {
+        guard !newMessageText.isEmpty else { return }
+        
+        chatService.sendMessage(conversationId: conversationId, text: newMessageText, userName: userName, userImageURL: userImageURL)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error sending message: \(error.localizedDescription)")
+                case .finished:
+                    break
                 }
-                .store(in: &cancellables)
-        }
+            } receiveValue: { [weak self] in
+                self?.newMessageText = ""
+            }
+            .store(in: &cancellables)
+    }
 
-    func fetchConversations() {
+    func observeConversations() {
         chatService.fetchConversations()
             .receive(on: DispatchQueue.main)
             .sink { completion in
