@@ -34,9 +34,10 @@ class JobViewModel: ObservableObject {
                 let latitudeEntrega = data["latitudeEntrega"] as? Double ?? 0.0
                 let longitudeEntrega = data["longitudeEntrega"] as? Double ?? 0.0
                 let userId = data["userId"] as? String ?? ""
+                let cpfcnpj = data["cpfCnpj"] as? String ?? ""
                 
                 
-                return Job(id: id, destinoColeta: destinoColeta, destinoEntrega: destinoEntrega, telefone: telefone, tipodeCarga: tipodeCarga, tipoDeCaminhao: tipoDeCaminhao, valor: valorFrete, latitudeColeta: latitudeColeta, longitudeColeta: longitudeColeta, latitudeEntrega: latitudeEntrega, longitudeEntrega: longitudeEntrega, userId: userId)
+                return Job(id: id, destinoColeta: destinoColeta, destinoEntrega: destinoEntrega, telefone: telefone, tipodeCarga: tipodeCarga, tipoDeCaminhao: tipoDeCaminhao, valor: valorFrete, latitudeColeta: latitudeColeta, longitudeColeta: longitudeColeta, latitudeEntrega: latitudeEntrega, longitudeEntrega: longitudeEntrega, userId: userId, cpfCnpj: cpfcnpj)
             }
         }
     }

@@ -49,7 +49,8 @@ final class NewJobServiceImpl: NewJobService {
             "tipodeCarga": credentials.tipodeCarga,
             "tipoDeCaminhao": credentials.tipoDeCaminhao,
             "valor": credentials.valor,
-            "userId": credentials.userId  // Adiciona o userId ao documento
+            "userId": credentials.userId,
+            "cpfCnpj" : credentials.cpfCnpj
         ] as [String : Any]
         
         Firestore.firestore().collection("anunciosTrabalhos").document(documentId).setData(jobData) { error in

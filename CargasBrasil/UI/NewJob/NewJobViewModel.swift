@@ -22,7 +22,7 @@ final class NewJobViewModelImpl: ObservableObject, NewJobViewModel {
     
     let service: NewJobService
     @Published var state: JobRegistrationState = .na
-    @Published var newJob = NewJobRequest(latitudeColeta: 0.0, longitudeColeta: 0.0, latitudeEntrega: 0.0, longitudeEntrega: 0.0, destinoColeta: "", destinoEntrega: "", telefone: "", tipodeCarga: "", tipoDeCaminhao: "", valor: " ", userId: " ")
+    @Published var newJob = NewJobRequest(latitudeColeta: 0.0, longitudeColeta: 0.0, latitudeEntrega: 0.0, longitudeEntrega: 0.0, destinoColeta: "", destinoEntrega: "", telefone: "", tipodeCarga: "", tipoDeCaminhao: "", valor: " ", userId: " ", cpfCnpj: "")
     
   
     @Published var hasError: Bool = false

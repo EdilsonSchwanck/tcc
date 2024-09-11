@@ -25,34 +25,9 @@ struct ChatView: View {
                         ForEach(viewModel.messages) { message in
                             HStack(alignment: .bottom, spacing: 10) {
                                 if !message.isSentByCurrentUser {
-                                    ProfileImageView(imageURL: message.userImageURL)
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(message.userName)
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                        
-                                        Text(message.text)
-                                            .padding(10)
-                                            .background(Color.gray.opacity(0.2))
-                                            .cornerRadius(12)
-                                            .foregroundColor(.black)
-                                    }
-                                    Spacer()
+                                    leftMessageView(message: message)
                                 } else {
-                                    Spacer()
-                                    VStack(alignment: .trailing) {
-                                        Text(message.text)
-                                            .padding(10)
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                                            .cornerRadius(12)
-                                            .foregroundColor(.white)
-                                    }
-                                    ProfileImageView(imageURL: message.userImageURL)
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
+                                    rightMessageView(message: message)
                                 }
                             }
                             .padding(.horizontal)
@@ -78,6 +53,7 @@ struct ChatView: View {
 
                 Button(action: {
                     sendMessage()
+                    print("conversationId \(conversationId)")
                 }) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
@@ -92,18 +68,92 @@ struct ChatView: View {
         }
         .background(Color(.systemGray6).edgesIgnoringSafeArea(.all))
         .onAppear {
-            viewModel.fetchMessages(conversationId: conversationId)
-            loadCurrentUserImageURL()  // Carrega a URL da imagem ao aparecer a view
+            fetchMessage()
+            loadCurrentUserImageURL()
         }
         .navigationTitle("Chat")
         .navigationBarTitleDisplayMode(.inline)
     }
 
+    private func leftMessageView(message: Message) -> some View {
+        let destinationView = UserProfileView(
+            userImageURL: message.userImageURL,
+            userName: message.userName,
+            typeVheicle: message.typeVheicle ?? "N/A",
+            plateVheicle: message.plateVheicle ?? "N/A",
+            isCompany: message.isCompany ?? false,
+            cpfCnpj: message.cpfCnpj ?? "N/A"
+        )
+
+        return HStack(alignment: .bottom, spacing: 8) {
+            NavigationLink(destination: destinationView) {
+                ProfileImageView(imageURL: message.userImageURL)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+            }
+            
+            VStack(alignment: .leading) {
+                Text(message.userName)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Text(message.text)
+                    .padding(10)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(12)
+                    .foregroundColor(.black)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 5)
+    }
+
+    private func rightMessageView(message: Message) -> some View {
+        let destinationView = UserProfileView(
+            userImageURL: message.userImageURL,
+            userName: message.userName,
+            typeVheicle: message.typeVheicle ?? "N/A",
+            plateVheicle: message.plateVheicle ?? "N/A",
+            isCompany: message.isCompany ?? false,
+            cpfCnpj: message.cpfCnpj ?? "N/A"
+        )
+
+        return HStack(alignment: .bottom, spacing: 8) { 
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Text(message.text)
+                    .padding(10)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .cornerRadius(12)
+                    .foregroundColor(.white)
+            }
+
+            NavigationLink(destination: destinationView) {
+                ProfileImageView(imageURL: message.userImageURL)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+            }
+        }
+        .padding(.horizontal, 5)
+    }
+    
+    private func fetchMessage() {
+        guard let userDetails = sessionService.userDetails else { return }
+        viewModel.fetchMessages(conversationId: otherUserId, cpfcnpj: userDetails.cnpj)
+        
+    }
+    
     private func sendMessage() {
         guard let userDetails = sessionService.userDetails else { return }
 
         let userName = userDetails.isCompany ? userDetails.nameCompany : userDetails.nameUser
-        viewModel.sendMessage(conversationId: conversationId, userName: userName, userImageURL: currentUserImageURL)
+        let isCompany = userDetails.isCompany
+        let cpfCnpj = userDetails.cnpj
+        let plateVheicle = userDetails.plateVheicle
+        let typeVheicle = userDetails.typeVheicle
+        
+        viewModel.sendMessage(conversationId: otherUserId, userName: userName, userImageURL: currentUserImageURL, isCompany: isCompany, cpfCnpj: cpfCnpj, plateVheicle: plateVheicle, typeVheicle: typeVheicle)
     }
 
     private func loadCurrentUserImageURL() {
@@ -127,7 +177,6 @@ struct ChatView: View {
         }
     }
 }
-
 #Preview {
     let exampleMessages = [
         Message(
@@ -136,7 +185,11 @@ struct ChatView: View {
             isSentByCurrentUser: true,
             timestamp: Date().timeIntervalSince1970 - 60,
             userName: "João",
-            userImageURL: nil // Ou você pode fornecer uma URL de exemplo, como "https://example.com/image1.jpg"
+            userImageURL: nil ,
+            isCompany: false,
+            cpfCnpj: "1232141241",
+            plateVheicle: "234134",
+            typeVheicle: "3414141"
         ),
         Message(
             id: "2",
@@ -144,7 +197,11 @@ struct ChatView: View {
             isSentByCurrentUser: false,
             timestamp: Date().timeIntervalSince1970 - 30,
             userName: "Maria",
-            userImageURL: "https://example.com/image2.jpg" // URL de exemplo
+            userImageURL: "https://example.com/image2.jpg",
+            isCompany: false,
+            cpfCnpj: "1232141241",
+            plateVheicle: "234134",
+            typeVheicle: "3414141"
         ),
         Message(
             id: "3",
@@ -152,7 +209,11 @@ struct ChatView: View {
             isSentByCurrentUser: true,
             timestamp: Date().timeIntervalSince1970,
             userName: "João",
-            userImageURL: nil // Ou uma URL realista
+            userImageURL: nil,
+            isCompany: false,
+            cpfCnpj: "1232141241",
+            plateVheicle: "234134",
+            typeVheicle: "3414141"
         )
     ]
 
@@ -160,5 +221,5 @@ struct ChatView: View {
     viewModel.messages = exampleMessages
 
     return ChatView(conversationId: "exampleConversationId", otherUserId: "exampleUserId")
-        .environmentObject(SessionServiceImpl())  // Necessário para o ambiente de pré-visualização
+        .environmentObject(SessionServiceImpl())
 }

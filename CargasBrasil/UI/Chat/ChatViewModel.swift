@@ -23,8 +23,9 @@ final class ChatViewModel: ObservableObject {
         self.observeConversations() // Iniciar a observação das conversas
     }
     
-    func fetchMessages(conversationId: String) {
-        chatService.fetchMessages(conversationId: conversationId)
+    func fetchMessages(conversationId: String, cpfcnpj: String) {
+        messages.removeAll()
+        chatService.fetchMessages(conversationId: conversationId, cpfcnpj: cpfcnpj)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -40,10 +41,10 @@ final class ChatViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func sendMessage(conversationId: String, userName: String, userImageURL: String?) {
+    func sendMessage(conversationId: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String?) {
         guard !newMessageText.isEmpty else { return }
         
-        chatService.sendMessage(conversationId: conversationId, text: newMessageText, userName: userName, userImageURL: userImageURL)
+        chatService.sendMessage(conversationId: conversationId, text: newMessageText, userName: userName, userImageURL: userImageURL, isCompany: isCompany, cpfCnpj: cpfCnpj, plateVheicle: plateVheicle, typeVheicle: typeVheicle)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -70,8 +71,29 @@ final class ChatViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] conversations in
                 self?.conversations = conversations
-                print("Conversations updated: \(conversations.count)")
+                print("Conversations updated: \(conversations.count)") // Verifique se o número de conversas está correto
+                print(conversations) // Isso vai imprimir os detalhes das conversas recebidas
             }
             .store(in: &cancellables)
     }
+
+
+    func deleteConversation(conversationId: String) {
+        chatService.deleteConversation(conversationId: conversationId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error deleting conversation: \(error.localizedDescription)")
+                case .finished:
+                    break
+                }
+            } receiveValue: {
+                print("Conversation deleted successfully.")
+            }
+            .store(in: &cancellables)
+    }
+
+    
+    
 }

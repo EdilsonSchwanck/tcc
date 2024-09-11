@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 import FirebaseAuth
 
+
 struct LocationCoordinate: Identifiable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
@@ -17,6 +18,7 @@ struct LocationCoordinate: Identifiable {
 
 struct NewJobView: View {
     @StateObject private var viewModel = NewJobViewModelImpl(service: NewJobServiceImpl())
+    @EnvironmentObject var sessionService: SessionServiceImpl
     
     @State private var pickupCoordinate: LocationCoordinate?
     @State private var deliveryCoordinate: LocationCoordinate?
@@ -131,6 +133,8 @@ struct NewJobView: View {
     }
 
     private func registerJob() {
+        guard let userDetails = sessionService.userDetails else { return }
+        let cpfCnpj = userDetails.cnpj
         if let pickup = pickupCoordinate?.coordinate, let delivery = deliveryCoordinate?.coordinate {
             guard let userId = Auth.auth().currentUser?.uid else {
                 return
@@ -147,13 +151,20 @@ struct NewJobView: View {
                 tipodeCarga: tipodeCarga,
                 tipoDeCaminhao: tipoDeCaminhao,
                 valor: valor,
-                userId: userId
+                userId: userId,
+                cpfCnpj: cpfCnpj
             )
             viewModel.create()
         }
     }
 
     private func updateJob() {
+        guard let userDetails = sessionService.userDetails else { return }
+
+        let cpfCnpj = userDetails.cnpj
+  
+        
+        
         if let job = job, let pickup = pickupCoordinate?.coordinate, let delivery = deliveryCoordinate?.coordinate {
             let updatedJob = NewJobRequest(
                 latitudeColeta: pickup.latitude,
@@ -166,7 +177,7 @@ struct NewJobView: View {
                 tipodeCarga: tipodeCarga,
                 tipoDeCaminhao: tipoDeCaminhao,
                 valor: valor,
-                userId: job.userId
+                userId: job.userId, cpfCnpj: cpfCnpj
             )
 
             viewModel.update(jobId: job.id, with: updatedJob)

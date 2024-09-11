@@ -30,6 +30,7 @@ class RegistrationCredentials: Encodable {
     var cidade: String
     var estado: String
     
+   
     
     init(email: String? = nil, password: String, cnhCategory: String? = nil, nameCompany: String? = nil, cpfCnpj: String? = nil, nameUser: String? = nil, numberCnh: String? = nil, plateVheicle: String? = nil, typeVheicle: String? = nil, phone: String? = nil, imageCNH: UIImage? = nil, isCompany: Bool?, cep: String, endereco: String, numero: String, bairro: String, cidade: String, estado: String) 
     {

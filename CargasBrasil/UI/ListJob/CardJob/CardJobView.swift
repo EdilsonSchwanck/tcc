@@ -216,7 +216,7 @@ extension Job {
             latitudeColeta: -23.55052,
             longitudeColeta: -46.6333,
             latitudeEntrega: -22.9068,
-            longitudeEntrega: -43.1729, userId: "44646"
+            longitudeEntrega: -43.1729, userId: "44646", cpfCnpj: "safsa"
         )
     }
 }

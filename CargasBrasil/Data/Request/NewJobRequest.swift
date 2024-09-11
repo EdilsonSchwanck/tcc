@@ -19,9 +19,10 @@ class NewJobRequest: Encodable {
     var tipoDeCaminhao: String
     var valor: String
     var userId: String
+    var cpfCnpj: String
     
    
-    init(latitudeColeta: Double, longitudeColeta: Double, latitudeEntrega: Double, longitudeEntrega: Double, destinoColeta: String, destinoEntrega: String, telefone: String, tipodeCarga: String, tipoDeCaminhao: String, valor: String, userId: String) {
+    init(latitudeColeta: Double, longitudeColeta: Double, latitudeEntrega: Double, longitudeEntrega: Double, destinoColeta: String, destinoEntrega: String, telefone: String, tipodeCarga: String, tipoDeCaminhao: String, valor: String, userId: String, cpfCnpj: String) {
         self.latitudeColeta = latitudeColeta
         self.longitudeColeta = longitudeColeta
         self.latitudeEntrega = latitudeEntrega
@@ -33,6 +34,7 @@ class NewJobRequest: Encodable {
         self.tipoDeCaminhao = tipoDeCaminhao
         self.valor = valor
         self.userId = userId
+        self.cpfCnpj = cpfCnpj
     }
     
     enum CodingKeys: String, CodingKey {
@@ -46,7 +48,8 @@ class NewJobRequest: Encodable {
         case tipodeCarga = "tipodeCarga"
         case tipoDeCaminhao = "tipoDeCaminhao"
         case valor = "valor"
-        case userId = "case userId "
+        case userId = "userId "
+        case cpfCnpj = "cpfCnpj"
     }
 }
 
@@ -63,7 +66,8 @@ extension NewJobRequest {
             "tipodeCarga": tipodeCarga,
             "tipoDeCaminhao": tipoDeCaminhao,
             "valor": valor,
-            "userId": userId
+            "userId": userId,
+            "cpfCnpj" : cpfCnpj
         ]
     }
 }

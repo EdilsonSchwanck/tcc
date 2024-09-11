@@ -24,6 +24,7 @@ struct UserSessionDetails {
     let nameCompany: String
     var plateVheicle: String
     var typeVheicle: String
+    let userImageURL: String?
     
     // Adicione aqui outros campos que você deseja armazenar
 }
@@ -86,6 +87,9 @@ private extension SessionServiceImpl {
                             let nameCompany = data["nameCompany"] as? String ?? ""
                             let plateVheicle = data["plateVheicle"] as? String ?? ""
                             let typeVheicle = data["typeVheicle"] as? String ?? ""
+                            let userImageURL = data["imageURL"] as? String ?? ""
+                            
+                            
                             // Adicione aqui outros campos que você deseja pegar
                             
                             DispatchQueue.main.async {
@@ -96,7 +100,8 @@ private extension SessionServiceImpl {
                                     isCompany: isCompany,
                                     nameCompany: nameCompany,
                                     plateVheicle: plateVheicle,
-                                    typeVheicle: typeVheicle
+                                    typeVheicle: typeVheicle,
+                                    userImageURL: userImageURL
                                 )
                             }
                         }

@@ -15,6 +15,10 @@ struct Message: Identifiable, Equatable {
     let timestamp: TimeInterval
     let userName: String
     let userImageURL: String?
+    let isCompany: Bool?
+    let cpfCnpj: String?
+    let plateVheicle: String?
+    let typeVheicle: String?
    
 
     static func ==(lhs: Message, rhs: Message) -> Bool {

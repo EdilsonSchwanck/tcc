@@ -20,4 +20,5 @@ struct Job: Identifiable {
     var latitudeEntrega: Double
     var longitudeEntrega: Double
     var userId: String
+    var cpfCnpj: String
 }
