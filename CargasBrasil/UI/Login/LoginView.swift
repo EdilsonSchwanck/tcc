@@ -8,11 +8,8 @@ import SwiftUI
 
 struct LoginView: View {
     
-  
-    
-    @StateObject private var viewModel = LoginViewModelImpl(
-        service: LoginServiceImpl()
-    )
+    @StateObject private var viewModel = LoginViewModelImpl(service: LoginServiceImpl())
+    @State private var showPasswordResetSheet = false
     
     var body: some View {
         NavigationStack {
@@ -25,7 +22,6 @@ struct LoginView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 135, height: 135)
-                           // .colorMultiply(.appBackground)
                             .padding(.bottom, 20)
                         
                         VStack {
@@ -58,10 +54,6 @@ struct LoginView: View {
                                     .foregroundStyle(Color.goldBackground)
                                     .font(.system(size: 14, weight: .bold))
                                 
-//                                Image("ic_arrow")
-//                                    .resizable()
-//                                    .frame(width: 20, height: 20)
-//                                    .foregroundColor(.goldBackground)
                                 Image(systemName: "arrow.right")
                                     .resizable()
                                     .frame(width: 15, height: 15)
@@ -72,7 +64,7 @@ struct LoginView: View {
                         }
                         
                         Button(action: {
-                             viewModel.login()
+                            viewModel.login()
                         }, label: {
                             Text("Login")
                                 .frame(width: 335)
@@ -84,12 +76,38 @@ struct LoginView: View {
                                 .ignoresSafeArea()
                         })
                         .padding(.top, 55)
+                        
+                        Button(action: {
+                            showPasswordResetSheet.toggle()
+                            }) {
+                                Text("Esqueceu sua senha?")
+                                .foregroundColor(Color.goldBackground)
+                            }
+                            .padding(.top, 10)
                     }
                     .padding(.top, 55)
                 }
             }
             .ignoresSafeArea(.keyboard)
         }
+       
+        .alert(isPresented: $viewModel.hasError) {
+            Alert(
+                title: Text("Alerta"),
+                message: Text("Senha ou e-mail incorreto. Por favor, tente novamente."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        
+        
+        .sheet(isPresented: $showPasswordResetSheet) {
+                   PasswordResetView(showPasswordResetSheet: $showPasswordResetSheet)
+                       .presentationDetents([.medium])
+                       
+        }
+        
+        
+        
     }
 }
 
