@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Assessment: Identifiable, Hashable {
+struct Assessment: Identifiable, Hashable, Codable {
     
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     let imageURL: String
     let textAssessment: String
     let nota: Int

@@ -13,6 +13,6 @@ struct Conversation: Identifiable {
     var userName: String
     var lastMessage: String
     var unreadMessagesCount: Int
-    var userImageURL: String?
- 
+    var userImageURL: String
+   
 }

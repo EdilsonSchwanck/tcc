@@ -6,6 +6,14 @@
 //
 
 
+//
+//  SessionService.swift
+//  CargasBrasil
+//
+//  Created by Edilson Borges on 08/08/24.
+//
+
+
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
@@ -17,7 +25,7 @@ enum SessionState {
 }
 
 struct UserSessionDetails {
-    let id: String  
+    let id: String
     let nameUser: String
     let cnpj: String
     let isCompany: Bool
@@ -110,3 +118,4 @@ private extension SessionServiceImpl {
             }
     }
 }
+

@@ -21,4 +21,5 @@ struct Job: Identifiable {
     var longitudeEntrega: Double
     var userId: String
     var cpfCnpj: String
+    var nomeEmpresa: String
 }

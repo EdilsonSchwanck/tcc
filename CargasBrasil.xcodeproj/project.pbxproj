@@ -25,6 +25,8 @@
 		A0BEF8022C5D54E600A6B0D5 /* RegistrationCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BEF8012C5D54E600A6B0D5 /* RegistrationCredentials.swift */; };
 		A0BEF8062C5D553400A6B0D5 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BEF8052C5D553400A6B0D5 /* RegistrationService.swift */; };
 		A0BEF8082C5D564100A6B0D5 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BEF8072C5D564100A6B0D5 /* RegistrationViewModel.swift */; };
+		A0BF36962C97C7AC005A66EF /* CpfCnpjFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF36952C97C7AC005A66EF /* CpfCnpjFormatter.swift */; };
+		A0BF36982C97CC25005A66EF /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF36972C97CC25005A66EF /* PhoneFormatter.swift */; };
 		A0C752452C6C28E5003EFACB /* ImageUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C752442C6C28E5003EFACB /* ImageUserRequest.swift */; };
 		A0C752472C6C2AC1003EFACB /* ImageUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C752462C6C2AC1003EFACB /* ImageUserService.swift */; };
 		A0C752492C6C2B1C003EFACB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C752482C6C2B1C003EFACB /* HomeViewModel.swift */; };
@@ -102,6 +104,8 @@
 		A0BEF8012C5D54E600A6B0D5 /* RegistrationCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCredentials.swift; sourceTree = "<group>"; };
 		A0BEF8052C5D553400A6B0D5 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		A0BEF8072C5D564100A6B0D5 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		A0BF36952C97C7AC005A66EF /* CpfCnpjFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpfCnpjFormatter.swift; sourceTree = "<group>"; };
+		A0BF36972C97CC25005A66EF /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		A0C752442C6C28E5003EFACB /* ImageUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUserRequest.swift; sourceTree = "<group>"; };
 		A0C752462C6C2AC1003EFACB /* ImageUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUserService.swift; sourceTree = "<group>"; };
 		A0C752482C6C2B1C003EFACB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -257,6 +261,15 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		A0BF36922C97C5A1005A66EF /* Mask */ = {
+			isa = PBXGroup;
+			children = (
+				A0BF36952C97C7AC005A66EF /* CpfCnpjFormatter.swift */,
+				A0BF36972C97CC25005A66EF /* PhoneFormatter.swift */,
+			);
+			path = Mask;
+			sourceTree = "<group>";
+		};
 		A0C8EA5E2C528FE900293746 = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +365,7 @@
 		A0C8EAC32C55631A00293746 /* Ultils */ = {
 			isa = PBXGroup;
 			children = (
+				A0BF36922C97C5A1005A66EF /* Mask */,
 				A0C8EAC42C55633600293746 /* CutsomTextField */,
 				A0BD0E282C5B0718002552CB /* ImagePicker.swift */,
 			);
@@ -571,6 +585,7 @@
 				A0BEF8062C5D553400A6B0D5 /* RegistrationService.swift in Sources */,
 				A0CBB54C2C7D8D3500477245 /* UserProfileViewModel.swift in Sources */,
 				A0FA3DCA2C65723B00747B96 /* LoginViewModel.swift in Sources */,
+				A0BF36962C97C7AC005A66EF /* CpfCnpjFormatter.swift in Sources */,
 				A05328382C6D80DE004AAF74 /* ChatViewModel.swift in Sources */,
 				A0CAF9792C73C92900068CA3 /* CardAssessmentProfile.swift in Sources */,
 				A0FFBF632C6D2EAB00BB0A94 /* ChatService.swift in Sources */,
@@ -596,6 +611,7 @@
 				A0C752452C6C28E5003EFACB /* ImageUserRequest.swift in Sources */,
 				A053283A2C6D92FB004AAF74 /* ProfileImageView.swift in Sources */,
 				A0C8EA812C52914500293746 /* LaunchScreenViewModel.swift in Sources */,
+				A0BF36982C97CC25005A66EF /* PhoneFormatter.swift in Sources */,
 				A0FFBF612C6D2E6D00BB0A94 /* Message.swift in Sources */,
 				A0FA3DC02C65397200747B96 /* RegistrationState.swift in Sources */,
 				A0C8EA7F2C52912500293746 /* LaunchScreenView.swift in Sources */,

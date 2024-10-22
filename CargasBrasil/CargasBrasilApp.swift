@@ -13,23 +13,27 @@ struct CargasBrasilApp: App {
     @StateObject var launchScreenManager = LaunchScreenViewModel()
     @StateObject var sessionService = SessionServiceImpl()
     
-    
     var body: some Scene {
         WindowGroup {
             if launchScreenManager.state == .completed {
-                switch sessionService.state {
-                    case .loggedIn:
-                        Home()
-                            .environmentObject(sessionService)
-                    case .loggedOut:
-                        LoginView()
-                    }// Substitua com sua tela de login
+                contentView
+                    .environmentObject(sessionService)
             } else {
                 LaunchScreenView()
                     .onAppear {
-                        launchScreenManager.dismiss() // Inicia a transição
+                        launchScreenManager.dismiss()
                     }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var contentView: some View {
+        switch sessionService.state {
+        case .loggedIn:
+            Home()
+        case .loggedOut:
+            LoginView()
         }
     }
 }

@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DDDE40DC-9034-4B13-B0AE-BD8908F395B3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/UI/Chat/ConversationListViewModel.swift"
@@ -24,14 +24,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EEA29202-EA82-4B00-967E-7C77A9D98326"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -40,14 +40,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "66751A7D-3B12-453C-9035-6D70F28E5675"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -56,14 +56,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "80EC6546-2C90-49EA-834A-B5D60D521E74"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/UI/Register/RegisterStepThreeView/RegisterStepThreeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -72,7 +72,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "65FD0C47-72CA-457C-B0C0-AA58766898D7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
@@ -120,7 +120,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F517F674-C5D2-42E5-89D1-55F27245B791"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
@@ -168,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E69D8D33-CD5D-4214-8B82-ADBAFB3BF072"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
@@ -216,7 +216,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "09594898-2655-4096-BDD3-21610A2ECD9A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/Data/Service/RegistrationService.swift"
@@ -311,47 +311,309 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D76BCC50-3276-4802-B6A5-A92E50933CBE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CargasBrasil/UI/Chat/ChatViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "sendMessage(conversationId:userName:userImageURL:isCompany:cpfCnpj:plateVheicle:typeVheicle:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D8A5469E-72F2-43BD-9FD5-5C8C3041FD82"
+            uuid = "6D398A1E-A502-4B13-934B-E38373FC4D3F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CargasBrasil/UI/Chat/ChatView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "ChatView"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE6C1544-71CD-42B6-9C9E-2A213AD39557"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CargasBrasil/UI/Chat/ChatView.swift"
+            filePath = "CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
+            landmarkName = "RegisterStepTwoView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D379B29-BFF7-400C-84A4-58D614719C02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "RegisterStepTwoView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5FE1C993-2641-4857-80FD-9ABC77C98D06"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "RegisterStepTwoView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "RegisterStepTwoView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - 5650d3a51b9cfe40"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of CargasBrasil.RegisterStepTwoView.bairro : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - e5464e7a4f2d1616"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.bairro.getter : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - f1b58c995606629f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.bairro.setter : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - 92b6e1e9a9de46ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.bairro.modify : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - 97bd1bb6790b0761"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.bairro.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - 41a96d5080169d57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.$bairro.getter : SwiftUI.Binding&lt;Swift.String&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "D5B75FB6-D276-4368-85C0-DA8713DA1E7B - 4d04f5ac7d099a61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 14 of CargasBrasil.RegisterStepTwoView.init(email: Swift.Optional&lt;Swift.String&gt;, cnhCategory: Swift.Optional&lt;Swift.String&gt;, nameCompany: Swift.Optional&lt;Swift.String&gt;, cpfCnpj: Swift.Optional&lt;Swift.String&gt;, nameUser: Swift.Optional&lt;Swift.String&gt;, numberCnh: Swift.Optional&lt;Swift.String&gt;, plateVheicle: Swift.Optional&lt;Swift.String&gt;, typeVheicle: Swift.Optional&lt;Swift.String&gt;, phone: Swift.Optional&lt;Swift.String&gt;, imageCNH: Swift.Optional&lt;__C.UIImage&gt;, isCompany: Swift.Optional&lt;Swift.Bool&gt;, cep: Swift.String, endereco: Swift.String, numero: Swift.String, bairro: Swift.String, cidade: Swift.String, estado: Swift.String) -&gt; CargasBrasil.RegisterStepTwoView"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "RegisterStepTwoView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - 4e7b5e4de9ded739"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of CargasBrasil.RegisterStepTwoView.numero : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - 1300a9a1e3abee0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.numero.getter : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - 2f76e8cceabcfa19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.numero.setter : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - c8774d1d4c54dee8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.numero.modify : Swift.String"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - 6cf5420d926a8188"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.numero.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - f943d79736d21a21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CargasBrasil.RegisterStepTwoView.$numero.getter : SwiftUI.Binding&lt;Swift.String&gt;"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "42D7E56E-F4BD-4EAB-9156-20D738F15E91 - 1ee05c1808256063"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 13 of CargasBrasil.RegisterStepTwoView.init(email: Swift.Optional&lt;Swift.String&gt;, cnhCategory: Swift.Optional&lt;Swift.String&gt;, nameCompany: Swift.Optional&lt;Swift.String&gt;, cpfCnpj: Swift.Optional&lt;Swift.String&gt;, nameUser: Swift.Optional&lt;Swift.String&gt;, numberCnh: Swift.Optional&lt;Swift.String&gt;, plateVheicle: Swift.Optional&lt;Swift.String&gt;, typeVheicle: Swift.Optional&lt;Swift.String&gt;, phone: Swift.Optional&lt;Swift.String&gt;, imageCNH: Swift.Optional&lt;__C.UIImage&gt;, isCompany: Swift.Optional&lt;Swift.Bool&gt;, cep: Swift.String, endereco: Swift.String, numero: Swift.String, bairro: Swift.String, cidade: Swift.String, estado: Swift.String) -&gt; CargasBrasil.RegisterStepTwoView"
+                  moduleName = "CargasBrasil"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Register/RegisterStepTwoView/RegisterStepTwoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "903C0EDF-0DF0-4728-894B-DF1326319AF9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/Chat/ChatView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "ChatView"
             landmarkType = "14">
          </BreakpointContent>
@@ -359,47 +621,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F75D42A-6BD3-47BF-B3C4-CE3FA659A8C3"
+            uuid = "D9B72670-94C5-4F04-8884-6A25775C3B07"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CargasBrasil/UI/Chat/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "sendMessage()"
-            landmarkType = "7">
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C4D2B36-DFFD-4850-8952-6BA969BE6779"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/UserProfileView/UserProfileView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "8F75D42A-6BD3-47BF-B3C4-CE3FA659A8C3 - 5846db1a9425b474"
+                  uuid = "8C4D2B36-DFFD-4850-8952-6BA969BE6779 - 83fe4a393f30cd57"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CargasBrasil.ChatView.sendMessage() -&gt; ()"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in CargasBrasil.UserProfileView.body.getter : some"
                   moduleName = "CargasBrasil"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Chat/ChatView.swift"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/UserProfileView/UserProfileView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "424">
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1328">
                </Location>
                <Location
-                  uuid = "8F75D42A-6BD3-47BF-B3C4-CE3FA659A8C3 - 5846db1a9425b455"
+                  uuid = "8C4D2B36-DFFD-4850-8952-6BA969BE6779 - af837cc54d1a3198"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CargasBrasil.ChatView.sendMessage() -&gt; ()"
+                  symbolName = "closure #2 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in CargasBrasil.UserProfileView.body.getter : some"
                   moduleName = "CargasBrasil"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Chat/ChatView.swift"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/UserProfileView/UserProfileView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "424">
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "696">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -407,47 +685,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "08F2D18E-326E-4749-B50F-5211978B3F9A"
+            uuid = "7BEDFE3E-67DA-478D-B85A-C926017C774F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CargasBrasil/UI/Chat/ChatView.swift"
+            filePath = "CargasBrasil/UI/UserProfileView/UserProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "sendMessage()"
-            landmarkType = "7">
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2C80CA5-3DFB-4973-BCE4-7C05A336D665"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CargasBrasil/UI/UserProfileView/UserProfileView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "08F2D18E-326E-4749-B50F-5211978B3F9A - 5846db1a9425b455"
+                  uuid = "C2C80CA5-3DFB-4973-BCE4-7C05A336D665 - 65a8b076632d2c11"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CargasBrasil.ChatView.sendMessage() -&gt; ()"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CargasBrasil.Assessment&gt;, Swift.String, CargasBrasil.CardAssessmentProfile&gt; in closure #2 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in CargasBrasil.UserProfileView.body.getter : some"
                   moduleName = "CargasBrasil"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Chat/ChatView.swift"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/UserProfileView/UserProfileView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "844">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "136">
                </Location>
                <Location
-                  uuid = "08F2D18E-326E-4749-B50F-5211978B3F9A - 5846db1a9425b5b6"
+                  uuid = "C2C80CA5-3DFB-4973-BCE4-7C05A336D665 - 5f32b5ca03ac6744"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CargasBrasil.ChatView.sendMessage() -&gt; ()"
+                  symbolName = "closure #1 (CargasBrasil.Assessment) -&gt; CargasBrasil.CardAssessmentProfile in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CargasBrasil.Assessment&gt;, Swift.String, CargasBrasil.CardAssessmentProfile&gt; in closure #2 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in CargasBrasil.UserProfileView.body.getter : some"
                   moduleName = "CargasBrasil"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/Chat/ChatView.swift"
+                  urlString = "file:///Users/edilsonborges/Desktop/TCC%20CargasBrasil/CargasBrasil/CargasBrasil/UI/UserProfileView/UserProfileView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "157"
-                  endingLineNumber = "157"
-                  offsetFromSymbolStart = "844">
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "120">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -455,16 +749,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F12C2FF7-132A-4A98-AB22-A7E3C77AAF1F"
+            uuid = "5677FB01-F200-46E6-8D06-85AD251213A9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CargasBrasil/UI/Login/LoginViewModel.swift"
+            filePath = "CargasBrasil/Data/Service/AssessmentService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "setupErrorSubscription()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "fetchAssessments(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

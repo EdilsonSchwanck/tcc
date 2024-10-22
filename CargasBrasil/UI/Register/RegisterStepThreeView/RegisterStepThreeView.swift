@@ -35,83 +35,88 @@ struct RegisterStepThreeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                ScrollView {
-                    VStack {
-                        Text("Informe os dados para cadastro")
-                            .padding(.bottom, 20)
-                            .padding(.top, 20)
-                        
-                        Group {
-                            CustomTextField(sfIncon: "lock", hint: "Senha", isPassword: true, value: $password)
-                            CustomTextField(sfIncon: "lock", hint: "Confirmar Senha", isPassword: true, value: $confirmPassword)
+            ZStack {
+                Color.appBackground
+                    .ignoresSafeArea()
+                VStack {
+                    ScrollView {
+                        VStack {
+                            Text("Informe os dados para cadastro")
+                                .padding(.bottom, 20)
+                                .padding(.top, 20)
+                            
+                            Group {
+                                CustomTextField(sfIncon: "lock", hint: "Senha", isPassword: true, value: $password)
+                                CustomTextField(sfIncon: "lock", hint: "Confirmar Senha", isPassword: true, value: $confirmPassword)
+                            }
+                            .frame(width: 330)
+                            .frame(height: 38)
+                            .padding(5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8).stroke(Color.goldBackground, lineWidth: 1)
+                            )
+                            .padding(2)
+                            .foregroundStyle(Color.goldBackground)
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
+                            .ignoresSafeArea(.keyboard)
                         }
-                        .frame(width: 330)
-                        .frame(height: 38)
-                        .padding(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8).stroke(Color.goldBackground, lineWidth: 1)
-                        )
-                        .padding(2)
-                        .foregroundStyle(Color.goldBackground)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .ignoresSafeArea(.keyboard)
+                        .padding(.horizontal, 15)
                     }
-                    .padding(.horizontal, 15)
-                }
-                
-                Button(action: {
-                    if password == confirmPassword {
-                        viewModel.newUser = RegistrationCredentials(
-                            email: email,
-                            password: password,
-                            cnhCategory: cnhCategory,
-                            nameCompany: nameCompany,
-                            cpfCnpj: cpfCnpj,
-                            nameUser: nameUser,
-                            numberCnh: numberCnh,
-                            plateVheicle: plateVheicle,
-                            typeVheicle: typeVheicle,
-                            phone: phone,
-                            imageCNH: imageCNH,
-                            isCompany: isCompany,
-                            cep: cep,
-                            endereco: endereco,
-                            numero: numero,
-                            bairro: bairro,
-                            cidade: cidade,
-                            estado: estado
-                        )
-                        viewModel.create()
-                    } else {
-                        // Handle password mismatch
-                    }
-                }, label: {
-                    Text("Cadastrar")
-                        .frame(width: 335)
-                        .frame(height: 50)
-                        .font(.system(size: 18, weight: .bold))
-                        .background(Color.goldBackground)
-                        .foregroundStyle(Color.colorLabelButton)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .ignoresSafeArea()
-                })
-                .padding(.bottom, 10)
-            }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
-            .alert(isPresented: $showSuccessAlert) {
-                Alert(
-                    title: Text("Cadastro realizado com sucesso!"),
-                    message: Text("Agora você pode realizar o login no app."),
-                    dismissButton: .default(Text("Certo!"), action: {
-                        navigateToLogin()
+                    
+                    Button(action: {
+                        if password == confirmPassword {
+                            viewModel.newUser = RegistrationCredentials(
+                                email: email,
+                                password: password,
+                                cnhCategory: cnhCategory,
+                                nameCompany: nameCompany,
+                                cpfCnpj: cpfCnpj,
+                                nameUser: nameUser,
+                                numberCnh: numberCnh,
+                                plateVheicle: plateVheicle,
+                                typeVheicle: typeVheicle,
+                                phone: phone,
+                                imageCNH: imageCNH,
+                                isCompany: isCompany,
+                                cep: cep,
+                                endereco: endereco,
+                                numero: numero,
+                                bairro: bairro,
+                                cidade: cidade,
+                                estado: estado
+                            )
+                            mostrarMask()
+                            viewModel.create()
+                        } else {
+                            // Handle password mismatch
+                        }
+                    }, label: {
+                        Text("Cadastrar")
+                            .frame(width: 335)
+                            .frame(height: 50)
+                            .font(.system(size: 18, weight: .bold))
+                            .background(Color.goldBackground)
+                            .foregroundStyle(Color.colorLabelButton)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .ignoresSafeArea()
                     })
-                )
-            }
-            .onChange(of: viewModel.state) { state in
-                if case .successfullyRegistered = state {
-                    showSuccessAlert = true
+                    .padding(.bottom, 10)
+                }
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                .alert(isPresented: $showSuccessAlert) {
+                    Alert(
+                        title: Text("Cadastro realizado com sucesso!"),
+                        message: Text("Agora você pode realizar o login no app."),
+                        dismissButton: .default(Text("Certo!"), action: {
+                            navigateToLogin()
+                        })
+                    )
+                }
+                .onChange(of: viewModel.state) { state in
+                    if case .successfullyRegistered = state {
+                        showSuccessAlert = true
+                    }
                 }
             }
         }
@@ -126,6 +131,11 @@ struct RegisterStepThreeView: View {
             }
         }
     }
+   
+    func mostrarMask(){
+        print("phone \(phone)")
+    }
+   
 }
 
 #Preview {
@@ -149,3 +159,5 @@ struct RegisterStepThreeView: View {
         estado: ""
     )
 }
+
+

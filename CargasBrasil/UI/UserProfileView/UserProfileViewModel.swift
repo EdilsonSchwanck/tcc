@@ -13,7 +13,7 @@ final class UserProfileViewModel: ObservableObject {
     @Published var averageRating: Double = 0.0
     
     
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     private let assessmentService: AssessmentService = AssessmentServiceImpl()
 
     func loadAssessments(for userId: String) {
@@ -35,6 +35,14 @@ final class UserProfileViewModel: ObservableObject {
     func submitAssessment(request: AssessmentRequest) {
         assessmentService.saveAssessment(with: request, uid: request.nameUser ?? "")
             .sink(receiveCompletion: { _ in }, receiveValue: { })
+            .store(in: &cancellables)
+    }
+    
+    func loadAssessmentsForCurrentUser(userId: String) {
+        assessmentService.fetchAssessments(for: userId)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] assessments in
+                self?.assessments = assessments
+            })
             .store(in: &cancellables)
     }
 }

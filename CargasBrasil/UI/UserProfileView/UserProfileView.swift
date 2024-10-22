@@ -36,9 +36,9 @@ struct UserProfileView: View {
        }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 10) {
             // Foto do usuário, nome e veículo
-            HStack(alignment: .top, spacing: 16) {
+            HStack(alignment: .top, spacing: 10) {
                 if let imageURL = userImageURL, let url = URL(string: imageURL) {
                     AsyncImage(url: url) { image in
                         image.resizable()
@@ -62,7 +62,7 @@ struct UserProfileView: View {
                         .shadow(radius: 4)
                 }
                 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(userName)
                         .font(.title)
                         .fontWeight(.bold)
@@ -93,7 +93,7 @@ struct UserProfileView: View {
             
             // Avaliações do usuário
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
+                HStack(spacing: 12) {
                     ForEach(assessments) { assessment in
                         CardAssessmentProfile(
                             profileImageURL: assessment.imageURL,
@@ -101,15 +101,17 @@ struct UserProfileView: View {
                             reviewText: assessment.textAssessment,
                             starRating: assessment.nota
                         )
+                        .frame(width: 250, height: 250)
                     }
                 }
                 .padding(.horizontal)
             }
             .padding(.vertical)
+            .padding(.top, -50)
             
             // Seção de Avaliação
             if !isSelfProfile {
-                        VStack(alignment: .leading, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 12) {
                             Text("Avalie \(userName)")
                                 .font(.headline)
                                 .padding(.horizontal)
@@ -162,7 +164,7 @@ struct UserProfileView: View {
                         .padding(.bottom, 20)
                     }
                     
-                    Spacer()
+                   Spacer()
                 }
                 .navigationTitle("Perfil")
                 .navigationBarTitleDisplayMode(.inline)

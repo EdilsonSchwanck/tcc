@@ -13,6 +13,8 @@ import FirebaseFirestore
 struct ChatView: View {
     var conversationId: String
     var otherUserId: String
+    
+    
     @StateObject private var viewModel = ChatViewModel()
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var currentUserImageURL: String = ""
@@ -53,6 +55,7 @@ struct ChatView: View {
 
                 Button(action: {
                     sendMessage()
+                  
                     print("conversationId \(conversationId)")
                 }) {
                     Image(systemName: "paperplane.fill")
@@ -140,21 +143,33 @@ struct ChatView: View {
     
     private func fetchMessage() {
         guard let userDetails = sessionService.userDetails else { return }
-        viewModel.fetchMessages(conversationId: otherUserId, cpfcnpj: userDetails.cnpj)
-        
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+
+        let conversationId = viewModel.chatService.generateConversationId(user1Id: currentUserId, user2Id: otherUserId)
+        viewModel.fetchMessages(conversationId: conversationId, cpfcnpj: userDetails.cnpj)
     }
     
     private func sendMessage() {
         guard let userDetails = sessionService.userDetails else { return }
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
 
         let userName = userDetails.isCompany ? userDetails.nameCompany : userDetails.nameUser
         let isCompany = userDetails.isCompany
         let cpfCnpj = userDetails.cnpj
         let plateVheicle = userDetails.plateVheicle
         let typeVheicle = userDetails.typeVheicle
-        
-        viewModel.sendMessage(conversationId: otherUserId, userName: userName, userImageURL: currentUserImageURL, isCompany: isCompany, cpfCnpj: cpfCnpj, plateVheicle: plateVheicle, typeVheicle: typeVheicle)
+
+        viewModel.sendMessage(
+            otherUserId: otherUserId,
+            userName: userName,
+            userImageURL: currentUserImageURL,
+            isCompany: isCompany,
+            cpfCnpj: cpfCnpj,
+            plateVheicle: plateVheicle,
+            typeVheicle: typeVheicle
+        )
     }
+
 
     private func loadCurrentUserImageURL() {
         guard let uid = Auth.auth().currentUser?.uid else { return }

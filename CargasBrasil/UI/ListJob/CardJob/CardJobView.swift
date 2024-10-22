@@ -49,6 +49,9 @@ struct CardJobView: View {
                     Text("Tipo de Caminhão: \(job.tipoDeCaminhao)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                    Text("Nome Empresa: \(job.nomeEmpresa)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     Text("Valor do Frete: R$ \(job.valor)")
                         .font(.headline)
                         .foregroundColor(.primary)
@@ -60,6 +63,7 @@ struct CardJobView: View {
                         HStack {
                             Button(action: {
                                 editJob()
+                                
                             }) {
                                 Text("Editar")
                                     .frame(maxWidth: .infinity)
@@ -97,6 +101,7 @@ struct CardJobView: View {
                             }
                         }
                     } else if !(sessionService.userDetails?.isCompany ?? false) {
+                       
                         NavigationLink(destination: ChatView(conversationId: job.id, otherUserId: job.userId)) {
                             Text("Chat")
                                 .frame(maxWidth: .infinity)
@@ -216,7 +221,7 @@ extension Job {
             latitudeColeta: -23.55052,
             longitudeColeta: -46.6333,
             latitudeEntrega: -22.9068,
-            longitudeEntrega: -43.1729, userId: "44646", cpfCnpj: "safsa"
+            longitudeEntrega: -43.1729, userId: "44646", cpfCnpj: "safsa", nomeEmpresa: "jdbfjdbf"
         )
     }
 }

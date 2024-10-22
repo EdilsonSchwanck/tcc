@@ -12,16 +12,17 @@ import FirebaseDatabase
 
 protocol ChatService {
     func fetchMessages(conversationId: String, cpfcnpj: String) -> AnyPublisher<[Message], Error>
-    func sendMessage(conversationId: String, text: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String?) -> AnyPublisher<Void, Error>
+    func sendMessage(text: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String?, otherUserId: String) -> AnyPublisher<Void, Error>
     func fetchConversations() -> AnyPublisher<[Conversation], Error>
-    
     func deleteConversation(conversationId: String) -> AnyPublisher<Void, Error>
+    
+    // Adicionando a assinatura do método
+    func generateConversationId(user1Id: String, user2Id: String) -> String
 }
 
 final class ChatServiceImpl: ChatService {
 
     private let databaseRef = Database.database().reference()
-
 
 
     func fetchConversations() -> AnyPublisher<[Conversation], Error> {
@@ -33,20 +34,23 @@ final class ChatServiceImpl: ChatService {
         }
 
         let conversationsRef = databaseRef.child("messages")
-        
+
         conversationsRef.observe(.value) { snapshot in
             var conversations: [Conversation] = []
 
-            // Iterar sobre todas as conversas
             for conversationSnapshot in snapshot.children.allObjects as? [DataSnapshot] ?? [] {
+                let participants = conversationSnapshot.key.split(separator: "-").map(String.init)
+
+                guard participants.contains(currentUserId) else { continue }
+
+                let otherUserId = participants.first { $0 != currentUserId } ?? ""
+
                 var lastMessage = ""
                 var lastTimestamp: TimeInterval = 0
-                var otherUserId: String?
-                var otherUserName: String?
-                var otherUserImageURL: String?
-                var isCurrentUserInvolved = false
+                var otherUserName: String = "Desconhecido"
+                var otherUserImageURL: String = ""
 
-                // Iterar sobre todas as mensagens dentro de uma conversa
+                // Iterar sobre as mensagens para capturar a última mensagem e identificar o remetente
                 for messageSnapshot in conversationSnapshot.children.allObjects as? [DataSnapshot] ?? [] {
                     if let messageDict = messageSnapshot.value as? [String: Any],
                        let userId = messageDict["userId"] as? String,
@@ -55,49 +59,43 @@ final class ChatServiceImpl: ChatService {
                        let text = messageDict["text"] as? String,
                        let timestamp = messageDict["timestamp"] as? TimeInterval {
 
-                        // Pegar a última mensagem com base no timestamp
+                        // Captura a última mensagem e o timestamp mais recente
                         if timestamp > lastTimestamp {
                             lastMessage = text
                             lastTimestamp = timestamp
                         }
 
-                        // Verificar se o currentUserId está envolvido
-                        if userId == currentUserId {
-                            isCurrentUserInvolved = true
-                        } else {
-                            // Se o currentUserId não for o remetente, é o outro participante
-                            otherUserId = userId
+                        // Se o `userId` é do outro usuário, capturamos seu nome e imagem
+                        if userId == otherUserId {
                             otherUserName = userName
                             otherUserImageURL = userImageURL
                         }
                     }
                 }
 
-                // Adicionar a conversa apenas se o currentUserId estiver envolvido
-                if isCurrentUserInvolved {
-                    let conversation = Conversation(
-                        id: conversationSnapshot.key,
-                        userName: otherUserName ?? "", // Nome do outro usuário
-                        lastMessage: lastMessage,
-                        unreadMessagesCount: 0, // Ajuste conforme necessário
-                        userImageURL: otherUserImageURL ?? "" // Foto do outro usuário
-                    )
-                    conversations.append(conversation)
-                }
+                let conversation = Conversation(
+                    id: conversationSnapshot.key,
+                    userName: otherUserName,  // Exibe sempre o nome do outro usuário
+                    lastMessage: lastMessage,
+                    unreadMessagesCount: 0,
+                    userImageURL: otherUserImageURL
+                )
+                conversations.append(conversation)
             }
-            
+
             subject.send(conversations)
         } withCancel: { error in
             subject.send(completion: .failure(error))
         }
-        
+
         return subject.eraseToAnyPublisher()
     }
+
     
     func fetchMessages(conversationId: String, cpfcnpj: String) -> AnyPublisher<[Message], Error> {
         let messagesSubject = PassthroughSubject<[Message], Error>()
         let messagesRef = self.databaseRef.child("messages").child(conversationId)
-        
+
         messagesRef.observe(.childAdded) { snapshot in
             guard let messageData = snapshot.value as? [String: Any],
                   let text = messageData["text"] as? String,
@@ -124,29 +122,52 @@ final class ChatServiceImpl: ChatService {
                 plateVheicle: plateVheicle,
                 typeVheicle: typeVheicle
             )
-            
+
             messagesSubject.send([message])
         } withCancel: { error in
             messagesSubject.send(completion: .failure(error))
         }
-        
+
         return messagesSubject.eraseToAnyPublisher()
     }
-
-    func sendMessage(conversationId: String, text: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String? ) -> AnyPublisher<Void, Error> {
+    
+    func generateConversationId(user1Id: String, user2Id: String) -> String {
+            let sortedIds = [user1Id, user2Id].sorted()
+            return sortedIds.joined(separator: "-")
+        }
+    
+    
+    func sendMessage(
+        text: String,
+        userName: String,
+        userImageURL: String?,
+        isCompany: Bool,
+        cpfCnpj: String?,
+        plateVheicle: String?,
+        typeVheicle: String?,
+        otherUserId: String
+    ) -> AnyPublisher<Void, Error> {
         Future { promise in
+            guard let currentUserId = Auth.auth().currentUser?.uid else {
+                promise(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Usuário não autenticado."])))
+                return
+            }
+
+            let conversationId = self.generateConversationId(user1Id: currentUserId, user2Id: otherUserId)
             let dbRef = self.databaseRef.child("messages").child(conversationId)
             let messageId = UUID().uuidString
+
             let messageData: [String: Any] = [
                 "text": text,
                 "timestamp": Date().timeIntervalSince1970,
-                "userId": Auth.auth().currentUser?.uid ?? "",
-                "userName": userName,
+                "userId": currentUserId,
+                "userName": userName,  // Nome do usuário atual
                 "userImageURL": userImageURL ?? "",
                 "isCompany": isCompany,
                 "cpfCnpj": cpfCnpj ?? "",
                 "plateVheicle": plateVheicle ?? "",
                 "typeVheicle": typeVheicle ?? ""
+                 // Nome da empresa ou do usuário
             ]
 
             dbRef.child(messageId).setValue(messageData) { error, _ in
@@ -159,6 +180,34 @@ final class ChatServiceImpl: ChatService {
         }
         .eraseToAnyPublisher()
     }
+    
+
+//    func sendMessage(conversationId: String, text: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String? ) -> AnyPublisher<Void, Error> {
+//        Future { promise in
+//            let dbRef = self.databaseRef.child("messages").child(conversationId)
+//            let messageId = UUID().uuidString
+//            let messageData: [String: Any] = [
+//                "text": text,
+//                "timestamp": Date().timeIntervalSince1970,
+//                "userId": Auth.auth().currentUser?.uid ?? "",
+//                "userName": userName,
+//                "userImageURL": userImageURL ?? "",
+//                "isCompany": isCompany,
+//                "cpfCnpj": cpfCnpj ?? "",
+//                "plateVheicle": plateVheicle ?? "",
+//                "typeVheicle": typeVheicle ?? ""
+//            ]
+//
+//            dbRef.child(messageId).setValue(messageData) { error, _ in
+//                if let error = error {
+//                    promise(.failure(error))
+//                } else {
+//                    promise(.success(()))
+//                }
+//            }
+//        }
+//        .eraseToAnyPublisher()
+//    }
     
     
     func deleteConversation(conversationId: String) -> AnyPublisher<Void, Error> {

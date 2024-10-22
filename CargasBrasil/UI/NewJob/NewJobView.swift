@@ -35,7 +35,7 @@ struct NewJobView: View {
     @State var tipoDeCaminhao: String = ""
     @State var valor: String = ""
 
-    var job: Job? // Propriedade opcional para edição
+    var job: Job?
 
     var body: some View {
         ZStack {
@@ -141,7 +141,7 @@ struct NewJobView: View {
             }
 
             viewModel.newJob = NewJobRequest(
-                latitudeColeta: pickup.latitude,
+                nameCompany: userDetails.nameCompany, latitudeColeta: pickup.latitude,
                 longitudeColeta: pickup.longitude,
                 latitudeEntrega: delivery.latitude,
                 longitudeEntrega: delivery.longitude,
@@ -153,6 +153,7 @@ struct NewJobView: View {
                 valor: valor,
                 userId: userId,
                 cpfCnpj: cpfCnpj
+                
             )
             viewModel.create()
         }
@@ -167,7 +168,7 @@ struct NewJobView: View {
         
         if let job = job, let pickup = pickupCoordinate?.coordinate, let delivery = deliveryCoordinate?.coordinate {
             let updatedJob = NewJobRequest(
-                latitudeColeta: pickup.latitude,
+                nameCompany: userDetails.nameCompany, latitudeColeta: pickup.latitude,
                 longitudeColeta: pickup.longitude,
                 latitudeEntrega: delivery.latitude,
                 longitudeEntrega: delivery.longitude,
@@ -185,8 +186,7 @@ struct NewJobView: View {
     }
 
     private func closeView() {
-        resetFields() // Limpa os campos de texto
-        // presentationMode.wrappedValue.dismiss() // Fecha a tela após o sucesso, se necessário
+        resetFields()
     }
 
     private func resetFields() {

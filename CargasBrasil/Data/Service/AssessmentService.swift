@@ -88,38 +88,51 @@ final class AssessmentServiceImpl: AssessmentService {
     }
     
     func fetchAssessments(for userId: String) -> AnyPublisher<[Assessment], Error> {
-        Future { promise in
-            Firestore.firestore().collection("assessments").document(userId).collection("userAssessments")
-                .order(by: "timestamp", descending: true)
+        guard !userId.isEmpty else {
+            return Fail(error: NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "O caminho do documento não pode estar vazio."]))
+                .eraseToAnyPublisher()
+        }
+
+        return Future { promise in
+            Firestore.firestore()
+                .collection("assessments")
+                .document(userId)  // Verificar se o userId é válido e não vazio
+                .collection("userAssessments")
                 .getDocuments { snapshot, error in
                     if let error = error {
                         promise(.failure(error))
-                    } else {
-                        guard let documents = snapshot?.documents else {
-                            print("Nenhum documento encontrado.")
-                            promise(.success([]))
-                            return
-                        }
-                        
-                        print("Documentos encontrados: \(documents.count)")
-                        
-                        let assessments = documents.compactMap { document -> Assessment? in
-                            let data = document.data()
-                            guard let imageURL = data["imageURL"] as? String,
-                                  let textAssessment = data["textAssessment"] as? String,
-                                  let nota = data["nota"] as? Int,
-                                  let nameUserAssessmet = data["nameUserAssessmet"] as? String,
-                                  let nomeUsuario = data["nomeUsuario"] as? String else {
-                                      print("Dados incompletos em documento: \(document.documentID)")
-                                      return nil
-                                
-                                //nameUserAssessmet
-                                  }
-                            return Assessment(imageURL: imageURL, textAssessment: textAssessment, nota: nota, nomeUsuario: nomeUsuario, nameUserAssessmet: nameUserAssessmet)
-                        }
-                        
-                        promise(.success(assessments))
+                        return
                     }
+
+                    guard let documents = snapshot?.documents else {
+                        print("Nenhum documento encontrado para o usuário \(userId).")
+                        promise(.success([]))
+                        return
+                    }
+
+                    let assessments = documents.compactMap { document -> Assessment? in
+                        let data = document.data()
+                        guard
+                            let imageURL = data["imageURL"] as? String,
+                            let textAssessment = data["textAssessment"] as? String,
+                            let nota = data["nota"] as? Int,
+                            let nameUserAssessmet = data["nameUserAssessmet"] as? String,
+                            let nomeUsuario = data["nomeUsuario"] as? String
+                        else {
+                            print("Dados incompletos no documento: \(document.documentID)")
+                            return nil
+                        }
+
+                        return Assessment(
+                            imageURL: imageURL,
+                            textAssessment: textAssessment,
+                            nota: nota,
+                            nomeUsuario: nomeUsuario,
+                            nameUserAssessmet: nameUserAssessmet
+                        )
+                    }
+
+                    promise(.success(assessments))
                 }
         }
         .receive(on: RunLoop.main)

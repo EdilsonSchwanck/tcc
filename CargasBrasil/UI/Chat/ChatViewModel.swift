@@ -16,7 +16,7 @@ final class ChatViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    private let chatService: ChatService
+     let chatService: ChatService
     
     init(chatService: ChatService = ChatServiceImpl()) {
         self.chatService = chatService
@@ -35,28 +35,55 @@ final class ChatViewModel: ObservableObject {
                     break
                 }
             } receiveValue: { [weak self] newMessages in
-                self?.messages.append(contentsOf: newMessages)
-                self?.messages.sort { $0.timestamp < $1.timestamp } // Garantir que as mensagens estejam em ordem cronológica
+                guard let self = self else { return }
+
+                // Verificar se a mensagem já foi adicionada
+                for newMessage in newMessages {
+                    if !self.messages.contains(where: { $0.id == newMessage.id }) {
+                        self.messages.append(newMessage)
+                    }
+                }
+
+                // Ordenar as mensagens por timestamp
+                self.messages.sort { $0.timestamp < $1.timestamp }
             }
             .store(in: &cancellables)
     }
 
-    func sendMessage(conversationId: String, userName: String, userImageURL: String?, isCompany: Bool, cpfCnpj: String?, plateVheicle: String?, typeVheicle: String?) {
+
+    func sendMessage(
+        otherUserId: String,
+        userName: String,
+        userImageURL: String?,
+        isCompany: Bool,
+        cpfCnpj: String?,
+        plateVheicle: String?,
+        typeVheicle: String?
+    ) {
         guard !newMessageText.isEmpty else { return }
-        
-        chatService.sendMessage(conversationId: conversationId, text: newMessageText, userName: userName, userImageURL: userImageURL, isCompany: isCompany, cpfCnpj: cpfCnpj, plateVheicle: plateVheicle, typeVheicle: typeVheicle)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Error sending message: \(error.localizedDescription)")
-                case .finished:
-                    break
-                }
-            } receiveValue: { [weak self] in
-                self?.newMessageText = ""
+
+        chatService.sendMessage(
+            text: newMessageText,
+            userName: userName,
+            userImageURL: userImageURL,
+            isCompany: isCompany,
+            cpfCnpj: cpfCnpj,
+            plateVheicle: plateVheicle,
+            typeVheicle: typeVheicle,
+            otherUserId: otherUserId
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { completion in
+            switch completion {
+            case .failure(let error):
+                print("Error sending message: \(error.localizedDescription)")
+            case .finished:
+                break
             }
-            .store(in: &cancellables)
+        } receiveValue: { [weak self] in
+            self?.newMessageText = ""
+        }
+        .store(in: &cancellables)
     }
 
     func observeConversations() {
