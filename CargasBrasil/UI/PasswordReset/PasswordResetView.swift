@@ -12,7 +12,7 @@ import SwiftUI
 import Firebase
 
 struct PasswordResetView: View {
-    @Binding var showPasswordResetSheet: Bool // Para controlar o fechamento
+    @Binding var showPasswordResetSheet: Bool
     @State private var email: String = ""
     @State private var showingAlert = false
     @State private var errorMessage: String?
@@ -42,6 +42,12 @@ struct PasswordResetView: View {
                     .font(.title2)
                     .bold()
                     .foregroundColor(Color.goldBackground)
+                Text("Enviáramos um e-mail de recuperação de senha para o seu e-mail")
+                    .foregroundColor(Color.goldBackground)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
+                    
                 
                 // CustomTextField para e-mail
                 CustomTextField(sfIncon: "at", hint: "Digite seu e-mail", value: $email)
@@ -54,12 +60,13 @@ struct PasswordResetView: View {
                     .foregroundStyle(Color.goldBackground)
                     .padding(.horizontal, 20)
                 
-                // Botão para enviar o e-mail de recuperação
+        
                 Button(action: {
                     sendPasswordReset()
                 }) {
-                    Text("Enviar e-mail de recuperação")
+                    Text("Enviar")
                         .frame(width: 280, height: 44)
+                        .bold()
                         .background(Color.goldBackground)
                         .foregroundColor(Color.colorLabelButton)
                         .cornerRadius(10)

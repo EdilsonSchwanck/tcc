@@ -86,10 +86,19 @@ struct Home: View {
                         if sessionService.userDetails?.isCompany == true {
                             NewJobView()
                                 .tabItem {
-                                    Image(systemName: selectedTab == 3 ? "plus.circle.fill" : "plus.circle.fill")
+                                    Image(systemName: selectedTab == 1 ? "plus.circle.fill" : "plus.circle.fill")
                                     Text("Anúciar")
                                 }
                                 .tag(1)
+                            
+                            MyPostJobsView()
+                                .tabItem {
+                                    Image(systemName: selectedTab == 2 ? "doc.plaintext" : "doc.plaintext")
+                                    Text("Meus Anúncios")
+                                }
+                                .tag(2)
+                            
+                            //MyPostJobs
                         }
 
 //                        Text("sla")
@@ -101,10 +110,10 @@ struct Home: View {
                         
                         PerfilView()
                             .tabItem {
-                                Image(systemName: selectedTab == 2 ? "person.fill" : "person")
+                                Image(systemName: selectedTab == 3 ? "person.fill" : "person")
                                 Text("Perfil")
                             }
-                            .tag(2)
+                            .tag(3)
                     }
                     .accentColor(.goldBackground)
                     .font(.headline)

@@ -12,6 +12,7 @@
 		A05328382C6D80DE004AAF74 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05328372C6D80DE004AAF74 /* ChatViewModel.swift */; };
 		A053283A2C6D92FB004AAF74 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05328392C6D92FB004AAF74 /* ProfileImageView.swift */; };
 		A053283E2C6D9A27004AAF74 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053283D2C6D9A26004AAF74 /* UserResponse.swift */; };
+		A08000452CC88AE30059489C /* MyPostJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08000442CC88AE30059489C /* MyPostJobsView.swift */; };
 		A0B14E682C6A4481005B604C /* NewJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B14E672C6A4481005B604C /* NewJobView.swift */; };
 		A0B14E6C2C6A5B3D005B604C /* MapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B14E6B2C6A5B3D005B604C /* MapPickerView.swift */; };
 		A0B14E6E2C6A7A7C005B604C /* NewJobRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B14E6D2C6A7A7C005B604C /* NewJobRequest.swift */; };
@@ -90,6 +91,7 @@
 		A05328372C6D80DE004AAF74 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		A05328392C6D92FB004AAF74 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		A053283D2C6D9A26004AAF74 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		A08000442CC88AE30059489C /* MyPostJobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostJobsView.swift; sourceTree = "<group>"; };
 		A0B14E672C6A4481005B604C /* NewJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobView.swift; sourceTree = "<group>"; };
 		A0B14E6B2C6A5B3D005B604C /* MapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerView.swift; sourceTree = "<group>"; };
 		A0B14E6D2C6A7A7C005B604C /* NewJobRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobRequest.swift; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 				A05328392C6D92FB004AAF74 /* ProfileImageView.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		A08000432CC88AA80059489C /* MyJobs */ = {
+			isa = PBXGroup;
+			children = (
+				A08000442CC88AE30059489C /* MyPostJobsView.swift */,
+			);
+			path = MyJobs;
 			sourceTree = "<group>";
 		};
 		A0B14E612C6A4410005B604C /* NewJob */ = {
@@ -330,6 +340,7 @@
 		A0C8EA7C2C52910700293746 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A08000432CC88AA80059489C /* MyJobs */,
 				A0CAF9752C73C06B00068CA3 /* UserProfileView */,
 				A05328322C6D6676004AAF74 /* Chat */,
 				A0B14E612C6A4410005B604C /* NewJob */,
@@ -575,6 +586,7 @@
 				A0B14E6E2C6A7A7C005B604C /* NewJobRequest.swift in Sources */,
 				A0B14E6C2C6A5B3D005B604C /* MapPickerView.swift in Sources */,
 				A0B14E752C6AE751005B604C /* job.swift in Sources */,
+				A08000452CC88AE30059489C /* MyPostJobsView.swift in Sources */,
 				A0B14E682C6A4481005B604C /* NewJobView.swift in Sources */,
 				A0BEF7FE2C5D4B4700A6B0D5 /* RegisterStepThreeView.swift in Sources */,
 				A0C8EACC2C56CA8600293746 /* TypeUserView.swift in Sources */,
