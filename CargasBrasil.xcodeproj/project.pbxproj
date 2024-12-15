@@ -299,6 +299,7 @@
 		A0C8EA692C528FE900293746 /* CargasBrasil */ = {
 			isa = PBXGroup;
 			children = (
+				A0C8EA702C528FEA00293746 /* Preview Content */,
 				A0BEF7FF2C5D54B200A6B0D5 /* Data */,
 				A0BD0E2A2C5B110F002552CB /* Info.plist */,
 				A0C8EAC32C55631A00293746 /* Ultils */,
@@ -307,7 +308,6 @@
 				A0C8EA7C2C52910700293746 /* UI */,
 				A0C8EA6A2C528FE900293746 /* CargasBrasilApp.swift */,
 				A0C8EAC12C52967700293746 /* AppDelegate.swift */,
-				A0C8EA702C528FEA00293746 /* Preview Content */,
 			);
 			path = CargasBrasil;
 			sourceTree = "<group>";

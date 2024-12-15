@@ -5,6 +5,7 @@
 //  Created by Edilson Borges on 08/08/24.
 //
 
+
 import SwiftUI
 import FirebaseAuth
 import FirebaseStorage
@@ -27,11 +28,12 @@ struct Home: View {
                 Color.appBackground
                     .ignoresSafeArea()
                 VStack(spacing: 0) {
+                    // Header
                     HStack {
+                        // Profile Image
                         Button(action: {
                             self.showSheet = true
                         }) {
-                            
                             Image(uiImage: profileImage ?? UIImage(named: "placeholder")!)
                                 .resizable()
                                 .scaledToFill()
@@ -59,12 +61,14 @@ struct Home: View {
                             }
                         }
 
+                        // Greeting
                         Text(displayedName())
                             .font(.title2)
                             .padding(.leading, 8)
 
                         Spacer()
 
+                        // Chat Button
                         NavigationLink(destination: LIstChatView()) {
                             Image(systemName: "message.fill")
                                 .resizable()
@@ -75,6 +79,7 @@ struct Home: View {
                     }
                     .padding(.top, 12)
 
+                    // TabView
                     TabView(selection: $selectedTab) {
                         ListJobView()
                             .tabItem {
@@ -83,11 +88,12 @@ struct Home: View {
                             }
                             .tag(0)
                         
+                        // Mostrar apenas para usuários do tipo "empresa"
                         if sessionService.userDetails?.isCompany == true {
                             NewJobView()
                                 .tabItem {
                                     Image(systemName: selectedTab == 1 ? "plus.circle.fill" : "plus.circle.fill")
-                                    Text("Anúciar")
+                                    Text("Anunciar")
                                 }
                                 .tag(1)
                             
@@ -97,23 +103,14 @@ struct Home: View {
                                     Text("Meus Anúncios")
                                 }
                                 .tag(2)
-                            
-                            //MyPostJobs
                         }
 
-//                        Text("sla")
-//                            .tabItem {
-//                                Image(systemName: selectedTab == 1 ? "creditcard.fill" : "creditcard")
-//                                Text("Transações")
-//                            }
-//                            .tag(2)
-                        
                         PerfilView()
                             .tabItem {
-                                Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                                Image(systemName: selectedTab == (sessionService.userDetails?.isCompany == true ? 3 : 1) ? "person.fill" : "person")
                                 Text("Perfil")
                             }
-                            .tag(3)
+                            .tag(sessionService.userDetails?.isCompany == true ? 3 : 1)
                     }
                     .accentColor(.goldBackground)
                     .font(.headline)
@@ -132,7 +129,6 @@ struct Home: View {
         guard let userDetails = sessionService.userDetails else {
             return "Carregando..."
         }
-        
         return "Olá \(userDetails.isCompany ? userDetails.nameCompany : userDetails.nameUser)"
     }
     
@@ -142,26 +138,17 @@ struct Home: View {
         let docRef = Firestore.firestore().collection("imageUsuario").document(uid)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                print("Documento encontrado: \(document.data() ?? [:])")
                 if let imageURL = document.data()?["imageURL"] as? String {
-                    print("aquiiiiiiii \(imageURL)")
                     downloadImage(from: imageURL)
-                } else {
-                    print("Chave 'imageURL' não encontrada ou valor inválido")
                 }
-            } else {
-                if let error = error {
-                    print("Erro ao buscar documento: \(error.localizedDescription)")
-                } else {
-                    print("Documento não encontrado")
-                }
+            } else if let error = error {
+                print("Erro ao buscar documento: \(error.localizedDescription)")
             }
         }
     }
 
     private func downloadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
-        
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data, let image = UIImage(data: data) {
                 DispatchQueue.main.async {
@@ -171,6 +158,7 @@ struct Home: View {
         }.resume()
     }
 }
+
 
 #Preview {
     Home().environmentObject(SessionServiceImpl())

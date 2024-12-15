@@ -5,15 +5,6 @@
 //  Created by Edilson Borges on 08/08/24.
 //
 
-
-//
-//  SessionService.swift
-//  CargasBrasil
-//
-//  Created by Edilson Borges on 08/08/24.
-//
-
-
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
@@ -64,13 +55,14 @@ final class SessionServiceImpl: SessionService, ObservableObject {
     
     func logout() {
         try? Auth.auth().signOut()
+        state = .loggedOut // Atualiza o estado para deslogado
+        userDetails = nil // Limpa os detalhes do usuário
     }
 }
 
 private extension SessionServiceImpl {
     
     func setupObservations() {
-        
         handler = Auth
             .auth()
             .addStateDidChangeListener { [weak self] _, _ in
@@ -97,12 +89,9 @@ private extension SessionServiceImpl {
                             let typeVheicle = data["typeVheicle"] as? String ?? ""
                             let userImageURL = data["imageURL"] as? String ?? ""
                             
-                            
-                            // Adicione aqui outros campos que você deseja pegar
-                            
                             DispatchQueue.main.async {
                                 self.userDetails = UserSessionDetails(
-                                    id: uid,  // Armazena o uid aqui
+                                    id: uid,
                                     nameUser: nameUser,
                                     cnpj: cnpj,
                                     isCompany: isCompany,
@@ -118,4 +107,3 @@ private extension SessionServiceImpl {
             }
     }
 }
-

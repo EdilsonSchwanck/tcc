@@ -12,7 +12,6 @@ struct ListJobView: View {
     @State private var searchText: String = ""
     @EnvironmentObject var sessionService: SessionServiceImpl
 
-   
     var filteredJobs: [Job] {
         if searchText.isEmpty {
             return viewModel.jobs
@@ -31,25 +30,26 @@ struct ListJobView: View {
                 .ignoresSafeArea()
             
             VStack {
-               
-                
-                if !(sessionService.userDetails?.isCompany == true) {
-                    CustomTextField(sfIncon: "magnifyingglass", hint: "pesquise suas cargas por, valor, destino, coleta", value: $searchText)
-                        .frame(width: 330)
-                        .frame(height: 38)
-                        .padding(5)
-                        .overlay(content: {
-                            RoundedRectangle(cornerRadius: 8).stroke(Color.goldBackground, lineWidth: 1)
-                        })
-                        .padding(2)
-                        .foregroundStyle(Color.goldBackground)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .ignoresSafeArea(.keyboard)
-                        .padding(.top, 15)
+                // Renderiza o campo de texto somente para usuários que não são empresas
+                if sessionService.userDetails?.isCompany == false {
+                    CustomTextField(
+                        sfIncon: "magnifyingglass",
+                        hint: "Pesquise suas cargas por valor, destino ou coleta",
+                        value: $searchText
+                    )
+                    .frame(width: 330)
+                    .frame(height: 38)
+                    .padding(5)
+                    .overlay(content: {
+                        RoundedRectangle(cornerRadius: 8).stroke(Color.goldBackground, lineWidth: 1)
+                    })
+                    .padding(2)
+                    .foregroundStyle(Color.goldBackground)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .ignoresSafeArea(.keyboard)
+                    .padding(.top, 15)
                 }
-             
-               
                 
                 ScrollView {
                     LazyVStack(spacing: 16) {
@@ -74,5 +74,5 @@ struct ListJobView: View {
 }
 
 #Preview {
-    ListJobView()
+    ListJobView().environmentObject(SessionServiceImpl())
 }

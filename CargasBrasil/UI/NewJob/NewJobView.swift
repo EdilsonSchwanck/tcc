@@ -63,11 +63,21 @@ struct NewJobView: View {
                             }
                             
                             CustomTextField(sfIncon: "lock", hint: "Destino de Coleta", value: $destinoColeta)
+                                .keyboardType(.default)
                             CustomTextField(sfIncon: "lock", hint: "Destino de Entrega", value: $destinoEntrega)
+                                .keyboardType(.default)
                             CustomTextField(sfIncon: "lock", hint: "Telefone", value: $telefone)
+                                .keyboardType(.numberPad)
                             CustomTextField(sfIncon: "lock", hint: "Tipo de Carga", value: $tipodeCarga)
+                                .keyboardType(.default)
                             CustomTextField(sfIncon: "lock", hint: "Tipo de Caminhão", value: $tipoDeCaminhao)
+                                
                             CustomTextField(sfIncon: "lock", hint: "Valor", value: $valor)
+                                .keyboardType(.numberPad)
+                            
+                            
+                            
+                            
                         }
                         .frame(width: 330)
                         .frame(height: 38)

@@ -42,7 +42,7 @@ struct CustomTextField: View {
                         
                     }else{
                         TextField("", text: $value, prompt: Text(hint).foregroundColor(Color.goldBackground))
-                            .keyboardType(.emailAddress)
+                           
                     }
 
    
